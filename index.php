@@ -2,9 +2,15 @@
 
 	$path['view']="app/view/";
 	
-	$header="login_header.php";
-	$content="login.php";
-	$footer="login_footer.php";
+	$title="Login Page";
+	
+	$header="login_header";
+	$content="login";
+	$footer="login_footer";
+	
+	if(isset($_GET['title'])){
+		$title=$_GET['title'];
+	}
 	
 	if(isset($_GET['header'])){
 		$header=$_GET['header'];
@@ -18,6 +24,6 @@
 		$footer=$_GET['footer'];
 	}
 	
-	include $path['view'].$header;
-	include $path['view'].$content;
-	include $path['view'].$footer;
+	include $path['view'].$header.".php";
+	include $path['view'].$content.".php";
+	include $path['view'].$footer.".php";
