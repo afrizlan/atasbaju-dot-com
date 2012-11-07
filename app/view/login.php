@@ -1,10 +1,11 @@
 <?php
 	//============================identitas halaman yang dituju=======================
-	$title="Home Page";//judul halaman yang akan di tuju ketika tombol submit di klik
-	$content="home";//nama file yang akan di tuju ketika tombol submit di klik
+	$title="title=Home Page";//judul halaman yang akan di tuju ketika tombol submit di klik
+	$content="content=home";//nama file yang akan di tuju ketika tombol submit di klik
+	$action="http://localhost/atasbaju-dot-com/index.php?".$title."&".$content;
 ?>
 <div id="content">
-	<form method="post" action="http://localhost/atasbaju-dot-com/index.php?title=<?php echo $title; ?>&content=<?php echo $content; ?>">
+	<form method="post" action="<?php echo $action; ?>">
 		<table>
 			<tr>
 				<td>Username</td>
