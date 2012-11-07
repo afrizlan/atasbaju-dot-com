@@ -24,6 +24,6 @@
 		$footer=$_GET['footer'];
 	}
 	
-	include $path['view'].$header.".php";
-	include $path['view'].$content.".php";
-	include $path['view'].$footer.".php";
+	require $path['view'].$header.".php";
+	require $path['view'].$content.".php";
+	require $path['view'].$footer.".php";
