@@ -1,12 +1,11 @@
 <?php
 
-	$path['view']="app/view/";
+	require "app/config/config.php";
 	
-	$header="login_header";
-	$content="login";
-	$footer="login_footer";
-	
-	$title="Login Page";
+	$title=$title['login'];
+	$header=$header['login'];
+	$content=$content['login'];
+	$footer=$footer['login'];
 	
 	if(isset($_GET['title'])){
 		$title=$_GET['title'];
