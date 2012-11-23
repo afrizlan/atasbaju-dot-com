@@ -22,3 +22,6 @@
 	$footer['login']="login_footer";
 	$footer['home']="footer";
 	
+	/*======== css ============*/
+	$css['login']="login.css";
+	
