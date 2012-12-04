@@ -1,6 +1,7 @@
 <?php
 
 	include "app/config/config.php";
+	include "app/model/connect.php";
 	
 	$title=$title['home'];
 	$header=$header['home'];
