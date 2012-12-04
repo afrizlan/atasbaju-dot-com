@@ -40,9 +40,13 @@ color:black;
 	position:absolute;
 	font-weight:bold;
 	font-size:30px;
-	color:#636064;
+	
 	padding-left:15px;
 	cursor:pointer;
+}
+
+#header #logo a{
+	color:#636064;
 }
 
 #header #link{
