@@ -1,11 +1,11 @@
 <?php
 
-	require "app/config/config.php";
+	include "app/config/config.php";
 	
-	$title=$title['login'];
-	$header=$header['login'];
-	$content=$content['login'];
-	$footer=$footer['login'];
+	$title=$title['home'];
+	$header=$header['home'];
+	$content=$content['home'];
+	$footer=$footer['home'];
 	
 	if(isset($_GET['title'])){
 		$title=$_GET['title'];
@@ -23,6 +23,6 @@
 		$footer=$_GET['footer'];
 	}
 	
-	require $path['view'].$header.".php";
-	require $path['view'].$content.".php";
-	require $path['view'].$footer.".php";
+	include $path['view'].$header.".php";
+	include $path['view'].$content.".php";
+	include $path['view'].$footer.".php";
