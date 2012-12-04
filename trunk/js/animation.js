@@ -27,6 +27,19 @@
 			 }
 			$('#image').animate({marginLeft:margin},"normal");
 		});
+		
+		$(".save").click(function(){			
+			var nform=$(this).attr('next_c')+$(this).attr('next_i');
+			var pform=$(this).attr('prev_c')+$(this).attr('prev_i');
+			console.log(nform);
+			
+			$(pform).slideUp("fast", function(){
+				$(nform).slideDown("fast");
+			});
+			
+			
+		
+		});
 	
 	});
 	

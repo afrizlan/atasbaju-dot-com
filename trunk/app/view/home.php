@@ -1,8 +1,6 @@
 
-  <body>
-  <script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/animation.js" ></script>
-	<div id="promosi">
+  
+ 	<div id="promosi">
 		<div id="slider">
 			<div id="image">
 				<ul>
@@ -41,29 +39,40 @@
 	</div>
 	
 	<div id="login">
-	<div id="title">LOGIN</div>
-	<form id="log_form" method="post">
-		<table>
-			<tr>
-				<td colspan="2">
-					<input type="text" name="username" placeholder="username">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="password" name="password" placeholder="password">
-				</td>
-			</tr>
-			<tr>
-				<td><a href="?">lupa password</a></td>
-				<td><input type="submit" value="masuk" name="login"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><a href="?"><div id="daftar" >Daftar Akun</div></a></td>
-			</tr>
-		</table>
-	</form>
-	
+		<div id="title">LOGIN</div>
+		<form id="log_form" method="post">
+			<table>
+				<tr>
+					<td colspan="2">
+						<input type="text" name="username" placeholder="username">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="password" name="password" placeholder="password">
+					</td>
+				</tr>
+				<tr>
+					<td><a href="?">lupa password</a></td>
+					<td><input type="submit" value="masuk" name="login"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a href="?title=Daftar+Akun&content=daftar&header=daftar_header"><div id="daftar_a" >Daftar Akun</div></a></td>
+				</tr>
+			</table>
+		</form>
+		<?php
+			include "app/model/M_login.php";
+			if(isset($_POST['login'])){
+				$username=htmlentities($_POST['username'],ENT_QUOTES);
+				$password=htmlentities($_POST['password'],ENT_QUOTES);
+				$check=new M_login();
+				$result=$check->check($username,$password);
+				if($result==true){
+					echo "<script>window.location='?content=dashboard&title=selamat+datang'</script>";
+				}else echo "<script>window.location='?content=gagal&title=gagal+login'</script>";
+			}
+		?>
 	</div>
 		
 	<div id="news">
@@ -97,4 +106,3 @@
 		</div>
 	</a>
 	
-  </body>
