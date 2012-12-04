@@ -1,8 +1,8 @@
 <?php
 	
-	$title="title=Home+Page";//judul halaman yang akan di tuju ketika tombol submit di klik
-	$content="content=home";//nama file yang akan di tuju ketika tombol submit di klik
-	$index="http://localhost/atasbaju-dot-com/index.php?";
+	$title="title=home+page";//judul halaman yang akan di tuju ketika tombol submit di klik
+	$content="content=home2";//nama file yang akan di tuju ketika tombol submit di klik
+	$index="http://localhost/atasbaju-dot-com/?";
 	
 	$url=$index.$title."&".$content;
 	

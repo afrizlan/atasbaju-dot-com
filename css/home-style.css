@@ -1,0 +1,262 @@
+/* ------- reset ------- */
+
+html, body, div, span, object, h1, h2, h3, h4, h5, h6,
+blockquote, pre, a, address, code, img, small, strong,
+dl, dt, dd, ol, ul, li, fieldset, form, label
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body{
+	line-height: 1.5;
+	font-family: arial, helvetica, sans-serif;
+	background-color:red;
+	background: url(./../image/gradient2.png) repeat-x;
+}
+
+ol,li,ul{
+	list-style: none;
+}
+a{
+text-decoration: none;
+color:black;
+}
+
+/* ------- end reset ------- */
+
+#header{
+	margin: 30px auto 0 auto;
+	width:1000px;
+	height:50px;
+}
+
+#header #logo{
+	position:absolute;
+	font-weight:bold;
+	font-size:30px;
+	color:#636064;
+	padding-left:15px;
+	cursor:pointer;
+}
+
+#header #link{
+	float:right;
+	padding-top:10px;
+	padding-right:15px;
+}
+
+#header ul li{
+	float:left;
+	margin: 5px 0 5px 30px;
+}
+
+#header ul li a{
+	font-weight:bold;
+	color:#636064;
+}
+
+#header,#footer,#content{
+	clear:both;
+}
+
+#content{
+	margin:5px auto;
+	width:1000px;
+	/*background-color:#cec8c1;*/
+	height:700px;
+}
+
+#promosi{
+	float:left;
+	width:80%;
+	background-color:#636064;
+	height:64.3%;
+	margin: 0 5px 5px 0;
+}
+#promosi #slider{
+	position:absolute;
+	margin:10px 65px;
+	width:676px;
+	height:440px;
+	overflow:hidden;
+	
+}
+#promosi #slider #image{
+	width:2028;
+}
+#promosi #slider #image ul li{
+	float:left;
+	position:relative;
+	margin-bottom:10px;
+}
+
+#promosi #slider #image div{
+	background-color:black;
+	width:656px;
+	height:70px;
+	color:white;
+	opacity:0.5;
+	padding:20px 10px 0 10px;
+	position:absolute;
+	bottom:-33px;
+}
+
+#promosi .nav{
+	margin-top:200px;
+	cursor:pointer;
+	opacity:0.3;
+	width:34px;
+	height:44px;
+}
+
+#promosi .nav:hover{
+	opacity:0.6;
+}
+#promosi #prev{
+	float:left;
+}
+
+#promosi #next{
+	float:right;
+}
+
+#login{
+	float:left;
+	width:19.5%;
+	background-color:#a5a4a4;
+	height:222px;
+	margin: 0 0 6px 0;
+}
+
+#login #title{
+	margin:10px auto;
+	width:50px;
+	color:#edeef2;
+	font-weight:bold;
+	clear:both;
+}
+
+#login p,#log_form{
+	clear:both;
+}
+
+#login form#log_form{
+	margin:5px 15px 15px 15px;
+}
+
+#login form#log_form table td{
+	padding-bottom:15px;
+}
+
+#login form#log_form a{
+	color:black;
+	font-size:12px;
+}
+
+#login form#log_form a:hover{
+	text-decoration:underline;
+}
+
+input[type="submit"]{
+	float:right;
+	cursor:pointer;
+}
+
+#login form#log_form td a{
+	color:#edeef2;
+	float:right;
+}
+
+#login form#log_form td#daftar a{
+	float:right;
+	color:#edeef2;
+	font-weight:bold;
+}
+
+#news{
+	float:left;
+	width:19.5%;
+	background-color:#8f908f;
+	height:222px;
+	margin: 0 0 0 0;
+}
+
+#news div{
+	padding:15px;
+}
+
+#footer{
+	text-align:center;
+}
+
+#email{
+	background-color:#04dbce;
+	
+}
+#facebook{
+	background-color:#466cb0;
+	margin-right:6px;
+}
+#twitter{
+	background-color:#00aced;
+	margin-right:6px;
+}
+
+#email,#facebook,#twitter{
+	float:left;
+	margin-top:1px;
+	margin-bottom:10px;
+	width:32.9%;
+	height:30%;	
+}
+
+#facebook div img{
+	margin: 13px 0 0 127px;
+	width:70px;
+}
+
+#facebook div p{
+	color:white;
+	font-size:19px;
+	margin: 159px 0 0 75px;
+}
+
+#facebook div img, #facebook div p{
+	position:absolute;
+}
+
+#twitter div img{
+	margin: 23 0 0 101;
+	width:165px;
+}
+
+#twitter div p{
+	color:white;
+	font-size:19px;
+	margin: 159px 0 0 75px;
+}
+
+#twitter div img, #twitter div p{
+	position:absolute;
+}
+
+#email div img{
+	margin: 35px 0 0 79px;
+	width:183px;
+}
+
+#email div p{
+	color:white;
+	font-size:23px;
+	margin: 159px 0 0 65px;
+}
+
+#email div img, #email div p{
+	position:absolute;
+}

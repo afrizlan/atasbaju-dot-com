@@ -12,7 +12,7 @@
 	
 	/*======== header =========*/
 	$header['login']="login_header";
-	$header['home']="header";
+	$header['home']="home_header";
 	
 	/*======== content =========*/
 	$content['login']="login";
@@ -20,7 +20,7 @@
 	
 	/*======== footer =========*/
 	$footer['login']="login_footer";
-	$footer['home']="footer";
+	$footer['home']="home_footer";
 	
 	/*======== css ============*/
 	$css['login']="login.css";
