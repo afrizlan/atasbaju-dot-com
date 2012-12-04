@@ -10,7 +10,7 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id="logo">
-				<h3>ATASBAJU.COM</h3>
+				<a color="red" href="?content=home"><h3>ATASBAJU.COM</h3></a>
 			</div>
 			<div id="link">
 				<ul>
