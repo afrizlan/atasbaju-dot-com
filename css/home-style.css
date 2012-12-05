@@ -323,6 +323,7 @@ input[type="submit"]{
 	padding:0 15px 15px 0;
 }
 
+
 #daftar input[type="text"],#daftar input[type="password"]{
 	height:30px;
 	width:200px;
@@ -333,20 +334,61 @@ input[type="submit"]{
 	padding:0 0 0 4px;
 }
 
-#daftar #form .save{
-	width:215px;
-	height:65px;
+#daftar #form .nav{
+	width:384px;
+	height:100px;
+	margin:-24px 0 0 250px;
+}
+
+#daftar #form .back{
+	width:161px;
+	height:76px;
 	background-color:#27c6fa;
-	margin:-15px 0 0 419px;
+	margin:0 0 0 33px;
 	cursor:pointer;
+	float:left;
+	border:none;
+	color:white;
+	font-size:24px;
+}
+
+#daftar #form .save{
+	width:161px;
+	height:76px;
+	background-color:#27c6fa;
+	margin:0 0 0 223px;
+	cursor:pointer;
+	border:none;
+	color:white;
+	font-size:24px;
 }
 
 #daftar #form .save p{
+	padding:23px 0 0 35px;
+}
+#daftar #form .back p{
+	padding:0 0 0 35px;
+}
+
+#daftar #form .saves{
+	width:161px;
+	height:76px;
+	background-color:#27c6fa;
+	margin:0 0 0 29px;
+	cursor:pointer;
+	border:none;
 	color:white;
-	font-size:26px;
-	padding:12px 0 0 64px;
+	font-size:24px;
 }
 
 #daftar #form #d_perusahaan_f{
 	display:none;
+}
+
+#daftar #form #konfirmasi{
+	display:none;
+}
+
+#daftar #form #pertanyaan_akhir{
+	margin:0 0 70px 0;
 }
