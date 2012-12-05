@@ -13,7 +13,8 @@
 	</div>
 
 	<div id="form">
-		<form class="d_form" id="d_akun_f" method="post">
+	<form method="post">
+		<div class="d_form" id="d_akun_f">
 			<table>
 				<tr>
 					<td>Nama Depan</td>
@@ -61,9 +62,9 @@
 			<div class="nav">
 				<div class="save" next_c=".d_form" next_i="#d_perusahaan_f" prev_c=".d_form" prev_i="#d_akun_f"><p>Simpan</p></div>
 			</div>
-		</form>
+		</div>
 		
-		<form class="d_form" id="d_perusahaan_f" method="post">
+		<div class="d_form" id="d_perusahaan_f">
 			<table>
 				<tr>
 					<td>Nama Perusahaan</td>
@@ -119,7 +120,7 @@
 				<div class="save" next_c=".konf" next_i="#konfirmasi" prev_c=".d_form" prev_i="#d_perusahaan_f" ><p>Simpan</p></div>
 			</div>
 			
-		</form>
+		</div>
 	
 		<div class="konf" id="konfirmasi" >
 			<div id="pertanyaan_akhir">
@@ -130,21 +131,59 @@
 				</p>
 			</div>
 			<div class="nav">
-			<form>
+			
 				<table>
 				<tr>
 					<td>
-						<input type="button" class="back" next_c=".d_form" next_i="#d_perusahaan_f" prev_c=".d_form" prev_i="#d_akun_f" value="Kembali">
+						<input type="button" class="back" next_c=".d_form" next_i="#d_perusahaan_f" prev_c=".konf" prev_i="#konfirmasi" value="Kembali">
 					</td>
 					<td>
-						<input type="submit" class="saves" next_c=".d_form" next_i="#d_perusahaan_f" prev_c=".d_form" prev_i="#d_akun_f" value="Proses">
+						<input type="submit" class="saves" name="proses" value="Proses">
 					</td>
 				</tr>	
 				</table>
-			</form>
+			
 			</div>
 		</div>
 	
+		<?php
+		include "app/model/M_daftar.php";
+		
+			if(isset($_POST['proses'])){
+				
+				$akun=array(
+					'n_depan'=>$_POST['n_depan'],
+					'n_belakang'=>$_POST['n_belakang'],
+					'username'=>$_POST['username'],
+					'j_kelamin'=>$_POST['j_kelamin'],
+					'tanggal'=>$_POST['tanggal'],
+					'bulan'=>$_POST['bulan'],
+					'tahun'=>$_POST['tahun']
+				);
+				$login=array(
+					'email'=>$_POST['email'],
+					'password'=>$_POST['password'],
+					'k_password'=>$_POST['k_password']
+				);
+				$perusahaan=array(
+					'n_per'=>$_POST['n_per'],
+					'e_per'=>$_POST['e_per'],
+					'tel_per'=>$_POST['tel_per'],
+					'f_per'=>$_POST['f_per'],
+					'a_per'=>$_POST['a_per'],
+					'k_per'=>$_POST['k_per'],
+					'kec_per'=>$_POST['kec_per'],
+					'kel_per'=>$_POST['kel_per']
+				);				
+					
+				$daftar=new M_daftar();
+				$result=$daftar->insert($login,$akun,$perusahaan);
+				
+				
+			}
+		?>
+	
+	</form>
 	</div>
 	
 </div>
