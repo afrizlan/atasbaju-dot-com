@@ -6,7 +6,7 @@
 		}
 		
 		function check($username,$password){
-			$query="select * from akun where username=md5('".$username."') and password=md5('".$password."')";
+			$query="select * from login where username='".$username."' and password=md5('".$password."')";
 			$result=mysql_query($query);
 			$row=mysql_num_rows($result);
 			if($row>0){

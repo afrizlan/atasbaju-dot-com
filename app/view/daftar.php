@@ -84,7 +84,7 @@
 				<tr>
 					<td>Fax</td>
 					<td>:</td>
-					<td colspan="3"><input type="password" name="f_per" placeholder="Contoh: (031)766xxxx" /></td>
+					<td colspan="3"><input type="text" name="f_per" placeholder="Contoh: (031)766xxxx" /></td>
 				</tr>
 				<tr>
 					<td>Alamat</td>
@@ -154,14 +154,13 @@
 				$akun=array(
 					'n_depan'=>$_POST['n_depan'],
 					'n_belakang'=>$_POST['n_belakang'],
-					'username'=>$_POST['username'],
-					'j_kelamin'=>$_POST['j_kelamin'],
-					'tanggal'=>$_POST['tanggal'],
-					'bulan'=>$_POST['bulan'],
-					'tahun'=>$_POST['tahun']
-				);
-				$login=array(
 					'email'=>$_POST['email'],
+					'j_kelamin'=>$_POST['j_kelamin'],
+					'tanggal'=>$_POST['tahun']."-".$_POST['bulan']."-".$_POST['tanggal']					
+				);
+				
+				$login=array(
+					'username'=>$_POST['username'],
 					'password'=>$_POST['password'],
 					'k_password'=>$_POST['k_password']
 				);
