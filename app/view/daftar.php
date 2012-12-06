@@ -49,7 +49,8 @@
 				<tr>
 					<td>Jenis Kelamin</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="j_kelamin" placeholder="" /></td>
+					<td colspan="3"><input type="radio" name="jk" value="Laki-Laki">&nbsp;Laki-Laki<br>
+			        <input type="radio" name="jk" value="Perempuan">&nbsp;Perempuan</td>
 				</tr>
 				<tr>
 					<td>Tanggal Lahir</td>
