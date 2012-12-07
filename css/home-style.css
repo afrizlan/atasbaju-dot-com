@@ -392,3 +392,7 @@ input[type="submit"]{
 #daftar #form #pertanyaan_akhir{
 	margin:0 0 70px 0;
 }
+
+#daftar #form td#wanita,#daftar #form td#pria{
+	font-size:16px;
+}

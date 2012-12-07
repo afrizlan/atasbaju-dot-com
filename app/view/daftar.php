@@ -49,8 +49,8 @@
 				<tr>
 					<td>Jenis Kelamin</td>
 					<td>:</td>
-					<td colspan="3"><input type="radio" name="jk" value="Laki-Laki">&nbsp;Laki-Laki<br>
-			        <input type="radio" name="jk" value="Perempuan">&nbsp;Perempuan</td>
+					<td colspan="3" id="pria"><input type="radio" name="j_kelamin" value="laki-laki">Laki-Laki</input>
+			        <input type="radio" name="j_kelamin" value="perempuan">Perempuan</input></td>
 				</tr>
 				<tr>
 					<td>Tanggal Lahir</td>
