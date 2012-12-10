@@ -134,8 +134,7 @@ include"conn.php";
 			<div id="pertanyaan_akhir">
 				<h4>Dengan ini saya menyatakan:</h4>
 				<p>
-					informasi yang saya masukkan mengenai detail akun dan detail perusahaan
-					benar.
+					informasi yang saya masukkan mengenai detail akun administrator adalah benar.
 				</p>
 			</div>
 			<div class="nav">
