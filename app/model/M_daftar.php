@@ -29,5 +29,5 @@
 			mysql_query($query2);
 			mysql_query($query3);
 			
-		}
+			}
 	}

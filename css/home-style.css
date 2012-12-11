@@ -16,8 +16,7 @@ dl, dt, dd, ol, ul, li, fieldset, form, label
 body{
 	line-height: 1.5;
 	font-family: arial, helvetica, sans-serif;
-	background-color:red;
-	background: url(./../image/gradient2.png) repeat-x;
+	
 }
 
 ol,li,ul{
@@ -291,25 +290,25 @@ input[type="submit"]{
 	margin:0 0 -20px 0;
 }
 
-#daftar #d_akun{
+#daftar #boxes #d_akun_f{
 	background-color:#04dbcf;
 }
 
-#daftar #d_perusahaan{
+#daftar #boxes #d_perusahaan_f{
 	background-color:#62fe32;
 }
 
-#daftar #selesai{
+#daftar #boxes #konfirmasi{
 	background-color:#d952fb;
 }
 
-#d_perusahaan p, #selesai p{
+#boxes #d_perusahaan_f p, #boxes #konfirmasi p{
 	color:white;
 	padding:72px 0 0 18px;
 	font-size:24px;
 }
 
-#d_akun p{
+#boxes #d_akun_f p{
 	color:white;
 	padding:107px 0 0 18px;
 	font-size:24px;
@@ -393,6 +392,4 @@ input[type="submit"]{
 	margin:0 0 70px 0;
 }
 
-#daftar #form td#wanita,#daftar #form td#pria{
-	font-size:16px;
-}
+

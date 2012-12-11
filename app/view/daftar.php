@@ -6,9 +6,9 @@
 
 	<div id="boxes">
 		<ul>
-			<li id="d_akun" class="box"><p>Detail Akun</p></li>
-			<li id="d_perusahaan" class="box"><p>Detail Perusahaan</p></li>
-			<li id="selesai" class="box"><p>Registrasi Akun Selesai</p></li>
+			<li id="d_akun_f" class="box"><p>Detail Akun</p></li>
+			<li id="d_perusahaan_f" class="box"><p>Detail Perusahaan</p></li>
+			<li id="konfirmasi" class="box"><p>Registrasi Akun Selesai</p></li>
 		</ul>
 	</div>
 
@@ -49,7 +49,7 @@
 				<tr>
 					<td>Jenis Kelamin</td>
 					<td>:</td>
-					<td colspan="3" id="pria"><input type="radio" name="j_kelamin" value="laki-laki">Laki-Laki</input>
+					<td colspan="3"><input type="radio" name="j_kelamin" value="laki-laki">Laki-Laki</input>
 			        <input type="radio" name="j_kelamin" value="perempuan">Perempuan</input></td>
 				</tr>
 				<tr>
