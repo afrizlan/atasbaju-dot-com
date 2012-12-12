@@ -96,14 +96,19 @@ if(isset($_POST["simpan"]))
     $query="INSERT INTO produk( idnum, jenis_produk, merk, jenis_ukuran, jumlah, warna, harga, keterangan,  tanggal_masuk ) 
 		VALUES( '$idnum', '$jenis_produk', '$merk', '$jenis_ukuran', '$jumlah', '$warna', '$harga', '$keterangan', now() )";
 		   
-    $result=mysql_query($query);            
+		   if(strlen($idnum&&$jenis_produk&&$jenis_ukuran&&$merk&&$jumlah&&$warna&&$harga)<1){
+		echo "Data harus terisi semua!";
+	}else{
+		   
+    	$result=mysql_query($query);            
     
-	if($result){  
-        echo "Produk telah tersimpan!";
-    }else{  
-        echo "Data produk tidak berhasil disimpan!";  
-    }  
-}  
+		if($result){  
+       	 echo "Produk telah tersimpan!";
+    	}else{  
+       	 echo "Data produk tidak berhasil disimpan!";  
+    	}  
+	}  
+}
 ?>
 	
 	</div>
