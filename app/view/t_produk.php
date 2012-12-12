@@ -57,9 +57,9 @@
 					</td>
 				</tr>	
 			  </table>
-		  <?php  
+
+<?php  
 require_once("connect.php"); 
-connect_db();  
   
 if($_POST["simpan"] == "Simpan")
 {  
