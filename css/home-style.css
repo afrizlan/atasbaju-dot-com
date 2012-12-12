@@ -336,14 +336,14 @@ input[type="submit"]{
 #daftar #form .nav{
 	width:384px;
 	height:100px;
-	margin:-24px 0 0 250px;
+	margin:0 0 0 250px;
 }
 
 #daftar #form .back{
 	width:161px;
 	height:76px;
 	background-color:#27c6fa;
-	margin:0 0 0 33px;
+	margin:0 0 0 24px;
 	cursor:pointer;
 	float:left;
 	border:none;
@@ -355,15 +355,16 @@ input[type="submit"]{
 	width:161px;
 	height:76px;
 	background-color:#27c6fa;
-	margin:0 0 0 223px;
+	margin:0 19px 0 0;
 	cursor:pointer;
 	border:none;
 	color:white;
 	font-size:24px;
+	float:right;
 }
 
 #daftar #form .save p{
-	padding:23px 0 0 35px;
+	padding:0 0 0 35px;
 }
 #daftar #form .back p{
 	padding:0 0 0 35px;
@@ -392,4 +393,12 @@ input[type="submit"]{
 	margin:0 0 70px 0;
 }
 
+.error{
+	
+	position:absolute;
+	font-size:9px;
+	color:red;
+	font-weight:bold;
+	margin:1px 0 0 201px;
+}
 

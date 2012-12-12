@@ -19,32 +19,49 @@
 				<tr>
 					<td>Nama Depan</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="n_depan" placeholder="Contoh: Budi" /></td>
+					<td colspan="3">
+						<p class="error" id="n_depan">nama depan harus diisi</p>
+						<input type="text" name="n_depan" placeholder="Contoh: Budi" />
+					</td>
 				</tr>
 				<tr>
 					<td>Nama Belakang</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="n_belakang" placeholder="Contoh: Setiawan" /></td>
+					<td colspan="3">
+						<input type="text" name="n_belakang" placeholder="Contoh: Setiawan" />
+					</td>
 				</tr>
 				<tr>
 					<td>Username</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="username" placeholder="Contoh: budi_set" /></td>
+					<td colspan="3">
+						<p class="error" id="username">username harus diisi</p>
+						<input type="text" name="username" placeholder="Contoh: budi_set" />
+					</td>
 				</tr>
 				<tr>
 					<td>Email</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="email" placeholder="Contoh: a@mail.com" /></td>
+					<td colspan="3">
+						<p class="error" id="e_email">email harus diisi</p>
+						<input type="text" name="e_email" placeholder="Contoh: a@mail.com" />
+					</td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td>:</td>
-					<td colspan="3"><input type="password" name="password" placeholder="minimal 6 karakter" /></td>
+					<td colspan="3">
+						<p class="error" id="password">password harus diisi</p>
+						<input type="password" name="password" placeholder="minimal 6 karakter" />
+					</td>
 				</tr>
 				<tr>
 					<td>Konfirmasi Password</td>
 					<td>:</td>
-					<td colspan="3"><input type="password" name="k_password" placeholder="minimal 6 karakter" /></td>
+					<td colspan="3">
+						<p class="error" id="k_password">konfirmasi password tidak sesuai</p>
+						<input type="password" name="k_password" placeholder="minimal 6 karakter" />
+					</td>
 				</tr>
 				<tr>
 					<td>Jenis Kelamin</td>
@@ -55,9 +72,16 @@
 				<tr>
 					<td>Tanggal Lahir</td>
 					<td>:</td>
-					<td><input class="ttl" type="text" name="tanggal" placeholder="tanggal" /></td>
-					<td><input class="ttl" type="text" name="bulan" placeholder="bulan" /></td>
-					<td><input class="ttl" type="text" name="tahun" placeholder="tahun" /></td>
+					<td>
+						<p class="error" id="tanggal">tanggal/bulan/tahun harus terisi</p>
+						<input class="ttl" type="text" name="tanggal" placeholder="tanggal" />
+					</td>
+					<td>
+						<input class="ttl" type="text" name="bulan" placeholder="bulan" />
+					</td>
+					<td>
+						<input class="ttl" type="text" name="tahun" placeholder="tahun" />
+					</td>
 				</tr>
 			</table>
 			<div class="nav">
@@ -70,12 +94,18 @@
 				<tr>
 					<td>Nama Perusahaan</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="n_per" placeholder="Contoh: PT. Maju Mundur" /></td>
+					<td colspan="3">
+						<p class="error" id="n_per">nama perusahaan harus diisi</p>
+						<input type="text" name="n_per" placeholder="Contoh: PT. Maju Mundur" />
+					</td>
 				</tr>
 				<tr>
 					<td>Email</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="e_per" placeholder="Contoh: a@mail.com" /></td>
+					<td colspan="3">
+						<p class="error" id="e_per">email perusahaan harus diisi</p>
+						<input type="text" name="e_per" placeholder="Contoh: a@mail.com" />
+					</td>
 				</tr>
 				<tr>
 					<td>No Telepon</td>
@@ -90,12 +120,18 @@
 				<tr>
 					<td>Alamat</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="a_per" placeholder="Contoh: Jl. Arif Rahman" /></td>
+					<td colspan="3">
+						<p class="error" id="a_per">alamat perusahaan harus diisi</p>
+						<input type="text" name="a_per" placeholder="Contoh: Jl. Arif Rahman" />
+					</td>
 				</tr>
 				<tr>
 					<td>Kota</td>
 					<td>:</td>
-					<td colspan="3"><input type="text" name="k_per" placeholder="Contoh: surabaya" /></td>
+					<td colspan="3">
+						<p class="error" id="k_per">kota perusahaan harus diisi</p>
+						<input type="text" name="k_per" placeholder="Contoh: surabaya" />
+					</td>
 				</tr>
 				<tr>
 					<td>Kecamatan</td>
@@ -107,13 +143,6 @@
 					<td>:</td>
 					<td colspan="3"><input type="text" name="kel_per" placeholder="Contoh: gebang putih" /></td>
 				</tr>
-				<!--<tr>
-					<td>Kota/Kec/Kel</td>
-					<td>:</td>
-					<td><input class="ttl" type="text" name="k_per" placeholder="Kota" /></td>
-					<td><input class="ttl" type="text" name="kec_per" placeholder="Kecamatan" /></td>
-					<td><input class="ttl" type="text" name="kel_per" placeholder="Kelurahan" /></td>
-				</tr>-->
 				
 			</table>
 			<div class="nav">
@@ -151,35 +180,50 @@
 		include "app/model/M_daftar.php";
 		
 			if(isset($_POST['proses'])){
-				
-				$akun=array(
-					'n_depan'=>$_POST['n_depan'],
-					'n_belakang'=>$_POST['n_belakang'],
-					'email'=>$_POST['email'],
-					'j_kelamin'=>$_POST['j_kelamin'],
-					'tanggal'=>$_POST['tahun']."-".$_POST['bulan']."-".$_POST['tanggal']					
+				$all_data=array(
+					$_POST['n_depan'],
+					$_POST['e_email'],
+					$_POST['j_kelamin'],
+					$_POST['tahun'],
+					$_POST['bulan'],
+					$_POST['tanggal'],
+					$_POST['username'],
+					$_POST['password'],
+					$_POST['k_password'],
+					$_POST['n_per'],
+					$_POST['e_per'],
+					$_POST['a_per'],
+					$_POST['k_per'],
 				);
+				if(!in_array("",$all_data,TRUE)){
+					$akun=array(
+						'n_depan'=>$_POST['n_depan'],
+						'n_belakang'=>$_POST['n_belakang'],
+						'email'=>$_POST['e_email'],
+						'j_kelamin'=>$_POST['j_kelamin'],
+						'tanggal'=>$_POST['tahun']."-".$_POST['bulan']."-".$_POST['tanggal']					
+					);
 				
-				$login=array(
-					'username'=>$_POST['username'],
-					'password'=>$_POST['password'],
-					'k_password'=>$_POST['k_password']
-				);
-				$perusahaan=array(
-					'n_per'=>$_POST['n_per'],
-					'e_per'=>$_POST['e_per'],
-					'tel_per'=>$_POST['tel_per'],
-					'f_per'=>$_POST['f_per'],
-					'a_per'=>$_POST['a_per'],
-					'k_per'=>$_POST['k_per'],
-					'kec_per'=>$_POST['kec_per'],
-					'kel_per'=>$_POST['kel_per']
-				);				
+					$login=array(
+						'username'=>$_POST['username'],
+						'password'=>$_POST['password'],
+						'k_password'=>$_POST['k_password']
+					);
+					$perusahaan=array(
+						'n_per'=>$_POST['n_per'],
+						'e_per'=>$_POST['e_per'],
+						'tel_per'=>$_POST['tel_per'],
+						'f_per'=>$_POST['f_per'],
+						'a_per'=>$_POST['a_per'],
+						'k_per'=>$_POST['k_per'],
+						'kec_per'=>$_POST['kec_per'],
+						'kel_per'=>$_POST['kel_per']
+					);
 					
-				$daftar=new M_daftar();
-				$result=$daftar->insert($login,$akun,$perusahaan);
-				
-				
+					$daftar=new M_daftar();
+					$result=$daftar->insert($login,$akun,$perusahaan);					
+				}else echo ("data gak lengkap");
+	
 			}
 		?>
 	
