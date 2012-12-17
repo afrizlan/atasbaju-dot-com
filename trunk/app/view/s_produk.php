@@ -79,10 +79,10 @@
 			  </table>
 
 <?php
+include (connect.php);
+
 	$cari = $_GET['cari'];
 	$query = "SELECT * FROM produk WHERE warna LIKE '%" . $cari . "%'";
-	$database = mysql_connect("localhost","root","");
-		mysql_select_db("atasbajucom", $database);
 
 	$result = mysql_query($query, $database);
 
