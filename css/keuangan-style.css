@@ -2,7 +2,7 @@
 
 html, body, div, span, object, h1, h2, h3, h4, h5, h6,
 blockquote, pre, a, address, code, img, small, strong,
-dl, dt, dd, ol, ul, li, fieldset, form, label
+dl, dt, dd, ol, ul, li, form, label
 {
 	margin: 0;
 	padding: 0;
@@ -42,6 +42,18 @@ color:black;
 	background-color:#04DBCF;
 }
 
+#top_right{
+	background-color:#E2FF47;
+}
+
+#bottom_left{
+	background-color:#48CF6E;
+}
+
+#bottom_right{
+	background-color:#9194EE;
+}
+
 #bottom{
 	/*background-color:blue;*/
 }
@@ -69,15 +81,16 @@ h3{
 
 input[type="text"],
 input[type="password"],
+input[type="date"],
 select{
 	width:130px;
 	height:30px;
-	color:white;
+	/*color:white;*/
 	margin:0 0 0 13px;
-	background-color:#05C4B9;
+	/*background-color:#05C4B9;*/
 	border:none;
-	border-radius:5px;
-	box-shadow:inset 0px 1px 10px -4px #595B5C;
+	/*border-radius:5px;*/
+	box-shadow:inset 2px 3px 10px -5px #050505;
 	padding:0 0 0 4px;
 }
 
@@ -93,8 +106,63 @@ form{
 	margin:13px 16px 0 12px;
 }
 table tr td{
-	color:#613D3D;
+	color:#313131;
 	font-weight:bold;
+	font-size:12px;
+	padding-top:9px;
+}
+
+#button_cont{
+	margin:0 0 0 0;
+}
+
+input[type='submit'],
+input[type='button']{
+	float:right;
+	width:100px;
+	height:32px;
+	border:none;
+	background-color:white;
+}
+
+.left input[type='submit'],
+.left input[type='button']{
+	margin:48px 0 0 13px;
+}
+
+.right input[type='submit'],
+.right input[type='button']{
+	margin:8px 0 0 7px;
+	width:86px;
+	height:28px;
 	font-size:12px;
 }
 
+textarea{
+	height:128px;
+	width:203px;
+}
+
+fieldset{
+	margin:10px 0 0 0;
+}
+
+.right input[type='text'],
+.right input[type='date'],
+.right select{
+	width:116px;
+	height:31px;
+	margin:0 0 0 0;
+}
+
+table{
+	margin:0 0 0 0;
+}
+
+#pemasukan{
+	width:429px;
+	height:160px;
+	clear:both;
+	margin:45px 0 0 36px;
+	overflow:scroll;
+}
