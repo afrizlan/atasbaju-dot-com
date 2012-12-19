@@ -1,3 +1,4 @@
+<?php include "app/model/M_keuangan.php";?>
 <link rel="stylesheet" type="text/css" href="css/keuangan-style.css"></link>
 <div id="top" class="box">
 	
@@ -7,7 +8,7 @@
 			<div class="left_form">
 				<table>
 					<tr>
-						<td>Merk Baju</td>
+						<td><label>Merk Baju</label></td>
 						<td>
 							<select name="merk">
 								<option value="merk1">Merk1</option>
@@ -17,7 +18,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Warna Baju</td>
+						<td><label>Warna Baju</label></td>
 						<td>
 							<select name="warna">
 								<option value="merah">Merah</option>
@@ -27,7 +28,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Ukuran Baju</td>
+						<td><label>Ukuran Baju</label></td>
 						<td>
 							<select name="ukuran">
 								<option value="s">S</option>
@@ -37,11 +38,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Jumlah Terjual</td>
+						<td><label>Jumlah Terjual</label></td>
 						<td><input type="text" name="jumlah"></input></td>
 					</tr>
 					<tr>
-						<td>Tanggal</td>
+						<td><label>Tanggal</label></td>
 						<td><input type="date" name="tanggal"></input></td>
 					</tr>
 				</table>
@@ -51,28 +52,27 @@
 				<legend>Detail Pembeli</legend>
 				<table>
 					<tr>
-						<td>Nama</td>
+						<td><label>Nama</label></td>
 						<td><input type="text" name="n_pembeli"></input></td>
 					</tr>
 					<tr>
-						<td>No.HP</td>
+						<td><label>No.HP</label></td>
 						<td><input type="text" name="hp_pembeli"></input></td>
 					</tr>
 					<tr>
-						<td>Email</td>
+						<td><label>Email</label></td>
 						<td><input type="text" name="e_pembeli"></input></td>
 					</tr>
 				</table>
 				</fieldset>
 			</div>
 			<div id="button_cont">
-				<input class="button" type="submit" name="simpan" value="Simpan"></input>
+				<input class="button" type="submit" name="simpan1" value="Simpan"></input>
 				<input class="button" type="button" name="batal" value="Batal"></input>
 			</div>
 		</form>
 		<?php
-			if(isset($_POST['simpan'])){
-				include "app/model/M_keuangan.php";
+			if(isset($_POST['simpan1'])){
 				$all_data=array(
 					$_POST['merk'],
 					$_POST['warna'],
@@ -109,8 +109,8 @@
 		<form>
 			<table>
 				<tr>
-					<td colspan="2">Filter Berdasarkan : </td>
-					<td colspan="2">Periode : </td>
+					<td colspan="2"><label>Filter Berdasarkan : </label></td>
+					<td colspan="2"><label>Periode : </label></td>
 				</tr>
 				<tr>
 					<td>
@@ -134,28 +134,38 @@
 				</tr>
 			</table>
 			<div class="bottom_cont">
-				<input class="button" type="submit" name="simpan" value="Simpan"></input>
+				<input class="button" type="submit" name="simpan2" value="Simpan"></input>
 				<input class="button" type="button" name="tambah" value="Tambah Filter"></input>
 			</div>
 		</form>
+		<div id="thead">
+			<table>
+				<tr>
+					<td>Tanggal</td>
+					<td>Merk</td>
+					<td>Ukuran</td>
+					<td>Warna</td>
+					<td>Jumlah</td>
+				</tr>
+			</table>
+		</div>
 		<div id="pemasukan">
 			<table>
-				<th>Tanggal</th>
-				<th>Merk</th>
-				<th>Ukuran</th>
-				<th>Warna</th>
-				<th>Jumlah Terjual</th>
+			<tbody>
 				<?php
-					for($i=0;$i<20;$i++){
+				$keuangan=new M_keuangan();
+				$data=$keuangan->get_penjualan();
+					foreach ($data as $row){
 						echo "<tr>".
-								"<td>data ke - ".$i."</td>".
-								"<td>data ke - ".$i."</td>".
-								"<td>data ke - ".$i."</td>".
-								"<td>data ke - ".$i."</td>".
-								"<td>data ke - ".$i."</td>".
+								"<td>".$row["tanggal"]."</td>".
+								"<td>".$row["merk"]."</td>".
+								"<td>".$row["ukuran"]."</td>".
+								"<td>".$row["warna"]."</td>".
+								"<td>".$row["jumlah"]."</td>".
 							"</tr>";
 					}
 				?>
+			</tbody>
 			</table>
 		</div>
 		
@@ -171,7 +181,7 @@
 			<div class="left_form">
 				<table>
 					<tr>
-						<td>Merk Baju</td>
+						<td><label>Merk Baju</label></td>
 						<td>
 							<select name="merk">
 								<option value="merk1">Merk1</option>
@@ -181,7 +191,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Warna Baju</td>
+						<td><label>Warna Baju</label></td>
 						<td>
 							<select name="warna">
 								<option value="merah">Merah</option>
@@ -191,7 +201,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Ukuran Baju</td>
+						<td><label>Ukuran Baju</label></td>
 						<td>
 							<select name="ukuran">
 								<option value="s">S</option>
@@ -201,31 +211,30 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Jumlah Produk</td>
+						<td><label>Jumlah Produk</label></td>
 						<td><input type="text" name="jumlah"></input></td>
 					</tr>
 					<tr>
-						<td>Tanggal</td>
+						<td><label>Tanggal</label></td>
 						<td><input type="date" name="tanggal"></input></td>
 					</tr>
 				</table>
 			</div>
 			<div class="right_form">
 				<table>
-				<tr><td>Keterangan</td></tr>
+				<tr><td><label>Keterangan</label></td></tr>
 				<tr>
 					<td><textarea name="keterangan"></textarea></td>
 				</tr>
 				</table>
 			</div>
 			<div class="button_cont">
-				<input class="button" type="submit" name="simpan1" value="Simpan"></input>
+				<input class="button" type="submit" name="simpan3" value="Simpan"></input>
 				<input class="button" type="button" name="batal" value="Batal"></input>
 			</div>
 		</form>
 		<?php
-			if(isset($_POST['simpan1'])){
-				include "app/model/M_keuangan.php";
+			if(isset($_POST['simpan3'])){
 				$all_data=array(
 					$_POST['merk'],
 					$_POST['warna'],
@@ -253,6 +262,68 @@
 
 	<div id="bottom_right" class="right">
 		<h3>Data Pengeluaran</h3>
+		<form>
+			<table>
+				<tr>
+					<td colspan="2"><label>Filter Berdasarkan : <label></td>
+					<td colspan="2"><label>Periode : </label></td>
+				</tr>
+				<tr>
+					<td>
+						<select name="kategori">
+							<option value="nama">Nama Baju</option>
+							<option value="merk">Merk Baju</option>
+							<option value="tanggal">Tanggal Terjual</option>
+							<option value="jumlah">Jumlah Terjual</option>
+							<option value="pilih" selected>Pilih Kategori</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" name="nilai" placeholder="nilai kategori"></input>
+					</td>
+					<td>
+						<input type="date" name="tanggal_awal"></input>
+					</td>
+					<td>
+						<input type="date" name="tanggal_awal"></input>
+					</td>
+				</tr>
+			</table>
+			<div class="bottom_cont">
+				<input class="button" type="submit" name="simpan4" value="Simpan"></input>
+				<input class="button" type="button" name="tambah" value="Tambah Filter"></input>
+			</div>
+		</form>
+		<div id="thead">
+			<table>
+				<tr>
+					<td>Tanggal</td>
+					<td>Merk</td>
+					<td>Ukuran</td>
+					<td>Warna</td>
+					<td>Jumlah</td>
+				</tr>
+			</table>
+		</div>
+		<div id="pemasukan">
+			<table>
+			<tbody>
+				<?php
+				$keuangan=new M_keuangan();
+				$data=$keuangan->get_pengeluaran();
+					foreach ($data as $row){
+						echo "<tr>".
+								"<td>".$row["tanggal"]."</td>".
+								"<td>".$row["merk"]."</td>".
+								"<td>".$row["ukuran"]."</td>".
+								"<td>".$row["warna"]."</td>".
+								"<td>".$row["jumlah"]."</td>".
+							"</tr>";
+					}
+				?>
+			</tbody>
+			</table>
+		</div>
 	</div>
 	
 </div>
