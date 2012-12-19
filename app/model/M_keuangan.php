@@ -36,7 +36,19 @@
 			
 		}
 		function get_penjualan(){
-			
+			$data=array();
+			$query="select * from penjualan";
+			$result=mysql_query($query);
+			while($row=mysql_fetch_array($result)){
+				$data[]=array(
+					'merk'=>$row['merk'],
+					'warna'=>$row['warna'],
+					'ukuran'=>$row['ukuran'],
+					'jumlah'=>$row['jumlah'],
+					'tanggal'=>$row['tanggal']
+				);
+			}
+			return $data;
 		}
 		
 		function input_pengeluaran($produk){
@@ -55,7 +67,19 @@
 		}
 		
 		function get_pengeluaran(){
-		
+			$data=array();
+			$query="select * from pengeluaran";
+			$result=mysql_query($query);
+			while($row=mysql_fetch_array($result)){
+				$data[]=array(
+					'merk'=>$row['merk'],
+					'warna'=>$row['warna'],
+					'ukuran'=>$row['ukuran'],
+					'jumlah'=>$row['jumlah'],
+					'tanggal'=>$row['tanggal']
+				);
+			}
+			return $data;
 		}
 		
 	}
