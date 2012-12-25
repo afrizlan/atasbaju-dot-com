@@ -13,4 +13,8 @@
 				return true;
 			}else return false;
 		}
+		
+		function logout(){
+			session_destroy();
+		}
 	}
