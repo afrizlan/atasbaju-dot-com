@@ -5,7 +5,7 @@
 	</div>
 
 	<div id="form">
-	<form method="post">
+	<form method="post" action="formProduk.php">
 	  <div class="t_form" id="t_form_p">
 			<table>
 				<tr>
@@ -76,19 +76,16 @@
 						<input type="submit" class="saves" name="simpan" value="Simpan">
 					</td>
 				</tr>	
-			  </table>
-
-<?php
-include (connect.php);
-
-	$cari = $_GET['cari'];
-	$query = "SELECT * FROM produk WHERE warna LIKE '%" . $cari . "%'";
-
-	$result = mysql_query($query, $database);
-
-	echo "<table border='1'>";
-	echo "<tr><td>No</td> <td>ID Produk</td> <td>Warna</td></tr>";
-		for($i=0; $row = mysql_fetch_row($result); $i++){
-	echo "<tr><td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td></tr>";}
-	echo "</table>";
-?>
+		</table>
+        
+        <?php
+			$a = new formProduk;
+			$a->cariProduk();
+			if ($a){
+				echo "<table border='1'>";
+				echo "<tr><td>No</td> <td>ID Produk</td> <td>Warna</td></tr>";
+					for($i=0; $row = mysql_fetch_row($result); $i++){
+				echo "<tr><td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td></tr>";}
+				echo "</table>";
+			}
+		?>
