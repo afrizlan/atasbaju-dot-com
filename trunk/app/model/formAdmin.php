@@ -1,5 +1,5 @@
 <?php
-class formWEB{
+class formAdmin{
 	function daftarUser(){
 		$nama = $_POST['nama'];
 		$tgl_lahir = $_POST['tgl_lahir'];
