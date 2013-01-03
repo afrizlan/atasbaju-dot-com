@@ -50,3 +50,19 @@
             </div>
         </form>
      </div>
+
+<?php
+if(isset($_POST['cari'])){
+	$query_str='';
+	if($_POST['j_produk']!='none'){
+		if($query_str!=''){
+			$query_str.='and ';
+		}
+		$query_str.="jenis_produk='".$_POST['j_produk']."' ";
+	}
+	if($_POST['merk']!=''){
+		if($query_str!=''){
+			$query_str.='and ';
+		}
+		$query_str.="merk='".$_POST['merk']."' ";
+	}}
