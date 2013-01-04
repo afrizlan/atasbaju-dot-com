@@ -65,4 +65,60 @@ if(isset($_POST['cari'])){
 			$query_str.='and ';
 		}
 		$query_str.="merk='".$_POST['merk']."' ";
-	}}
+	}
+	if($_POST['warna']!=''){
+		if($query_str!=''){
+			$query_str.='and ';
+		}
+		$query_str.="warna='".$_POST['warna']."' ";
+	}
+	if($_POST['j_ukuran']!='none'){
+		if($query_str!=''){
+			$query_str.='and ';
+		}
+		$query_str.="jenis_ukuran='".$_POST['j_ukuran']."'";
+	}
+	if($query_str!=''){
+		$query_str='where '.$query_str;
+	}
+	$cari=$_POST['j_produk'];
+	include ("connect.php"); 
+	$query="select * from produk ".$query_str;
+	echo $query;
+	$result=mysql_query($query);
+	$data=array();
+
+	while($row=mysql_fetch_array($result)){
+		$data[]=array(
+			'jenis_produk'=>$row['jenis_produk'],
+			'merk'=>$row['merk'],
+			'warna'=>$row['warna'],
+			'jenis_ukuran'=>$row['jenis_ukuran']
+		);
+	}	
+
+
+?>
+<table id="list_produk">
+	
+
+<?php
+$c=1;
+foreach($data as $row){
+	if($c % 2){
+		echo "<tr class='even'>";
+	}else{
+		echo "<tr class='odd'>";
+	}
+	echo 	"<td>".$row['jenis_produk']."</td>".
+			"<td>".$row['merk']."</td>".
+	 		"<td>".$row['warna']."</td>".
+			"<td>".$row['jenis_ukuran']."</td>".
+			"</tr>";
+	$c+=1;
+echo $c;
+	}
+
+} 
+ ?> 
+ </table>
