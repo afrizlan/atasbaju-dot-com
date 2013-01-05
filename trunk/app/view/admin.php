@@ -1,7 +1,6 @@
-<?php
-include"conn.php";
-?>
-<div id="daftar">
+<link rel="stylesheet" href="css/admin-style.css"></link>
+<script type="text/javascript" src="js/admin.js"></script>
+<div id="admin">
 	
 	<div id="title">
 		ADMINISTRATOR
@@ -9,15 +8,19 @@ include"conn.php";
 
 	<div id="boxes">
 		<ul>
-			<li id="c_akun" class="box"><a href="?"><p>Cari Akun</p></li>
-			<li id="a_akun" class="box"><a href="?"><p>Tambah Akun Admin</p></li>
-			<li id="logout" class="box"><a href="?"><p>Logout</p></li>
+			<li id="c_akun" class="box"><p>Cari Akun</p></li>
+			<li id="a_akun" class="box"><p>Tambah Akun Admin</p></li>
+			<li id="logout" class="box"><p>Logout</p></li>
 		</ul>
 	</div>
-    
-    <div id="form">
-    	<form method="post">
-        	<div class="d_form" id="c_akun"> 
+    <div id="right">
+			
+	</div>
+
+<div id="toShow">
+	<div id="c_akun">
+	<form method="post">
+        	<div class="d_form"> 
                 <table class="table">
                     <tr>
                         <td>Username</td>
@@ -32,56 +35,52 @@ include"conn.php";
                 </table>
                 <div class="submit" next_c=".d_form" next_i="#h_akun"><p>Cari</p></div>
             </div>
-        </form>
-     </div>
-    	
-     <div id="form">
-        <form method="post">
-        	<div class="d_form" id="h_akun">    
-            <h5>Daftar Akun<hr width=400 size=3></h5></font>
-            <table class="table">
-            <font color=white>
-            <tr height="25" bgcolor="#0066FF">
-            <td rowspan="1" valign="middle"><center>No.</center></td>
-            <td rowspan="1" valign="middle"><center>Nama Depan</center></td>
-            <td rowspan="1" valign="middle"><center>Nama Belakang</center></td>
-            <td rowspan="1" valign="middle"><center>Username</center></td>
-            <td rowspan="1" valign="middle"><center>Email</center></td>
-            <td rowspan="1" valign="middle"><center>Jenis Kelamin</center></td>
-            <td rowspan=1 valign=center align=center>Edit</td>
-            <td rowspan=1 valign=center align=center>Hapus</td>
-            </tr>
-            </font>
-            
-            <?php
-            $no = 1;
-            
-            $lihat = mysql_query("SELECT * FROM akun order by id_hp DESC");
-            while($a = mysql_fetch_array($lihat)){
+	</form>
+	</div>
+		
+	<div id="hasil_cari">
+        <h5>Daftar Akun<hr width=400 size=3></h5></font>
+        <table class="table">
+        <font color=white>
+        <tr height="25" bgcolor="#0066FF">
+        <td rowspan="1" valign="middle"><center>No.</center></td>
+        <td rowspan="1" valign="middle"><center>Nama Depan</center></td>
+        <td rowspan="1" valign="middle"><center>Nama Belakang</center></td>
+        <td rowspan="1" valign="middle"><center>Username</center></td>
+        <td rowspan="1" valign="middle"><center>Email</center></td>
+        <td rowspan="1" valign="middle"><center>Jenis Kelamin</center></td>
+        <td rowspan=1 valign=center align=center>Edit</td>
+        <td rowspan=1 valign=center align=center>Hapus</td>
+        </tr>
+        </font>
+          
+        <?php
+        $no = 1;
+          
+        $lihat = mysql_query("SELECT * FROM akun order by id DESC");
+         while($a = mysql_fetch_array($lihat)){
             echo"
             <tr>
             <td align=right>$no.</td>
             <td align=right>$a[nama_depan]</td>
             <td>$a[nama_belakang]</td>
-            <td>$a[username]</td>
             <td>$a[email]</td>
-            <td>$a[jenis_kelamin]</td>
-            <td align=center><a class=btn btn-primary btn-small href=edit.php?id=$a[id_hp]>Edit</a></li></ul></td>
-            <td align=center><a class=btn btn-primary btn-small href=\"delete.php?id=$a[id_hp]\">Hapus</a></li></ul></td>
+            <td>$a[j_kelamin]</td>
+			<td>$a[tanggal_lahir]</td>
+            <td align=center><a class=btn btn-primary btn-small href=edit.php?id=$a[id]>Edit</a></li></ul></td>
+            <td align=center><a class=btn btn-primary btn-small href=\"delete.php?id=$a[id]\">Hapus</a></li></ul></td>
             </tr>";
             $no++;
             }
             ?>
             </table>
-            </div>
-         </form>
-      </div>
-         
-         <div id="form">
-            <form method="post">
-                <div class="d_form" id="a_akun">
-                    <table>
-                        <tr>
+	</div>
+     
+	<div id="a_akun">
+	<form method="post">
+        <div class="d_form">
+                  <table>
+                      <tr>
                             <td>Nama Depan</td>
                             <td>:</td>
                             <td colspan="3"><input type="text" name="n_depan" placeholder="Contoh: Budi" /></td>
@@ -130,33 +129,11 @@ include"conn.php";
                     </div>
                 </div>
                 
-                <div class="konf" id="konfirmasi" >
-                    <div id="pertanyaan_akhir">
-                        <h4>Dengan ini saya menyatakan:</h4>
-                        <p>
-                            informasi yang saya masukkan mengenai detail akun administrator adalah benar.
-                        </p>
-                    </div>
-                    <div class="nav">
-                    
-                        <table>
-                        <tr>
-                            <td>
-                                <input type="button" class="back" next_c=".d_form" next_i="#a_akun" prev_c=".konf" prev_i="#konfirmasi" value="Kembali">
-                            </td>
-                            <td>
-                                <input type="submit" class="saves" name="proses" value="Proses">
-                            </td>
-                        </tr>	
-                        </table>
-                    </div>
-				</div>
+                
              </form>
-          </div>
-          
-          
-          <div id="form">
-            <form method="post">
+			 </div>
+			 
+			  <form method="post">
                 <div class="d_form" id="e_akun">
                     <table>
                         <tr>
@@ -204,40 +181,24 @@ include"conn.php";
                         </tr>
                     </table>
                     <div class="nav">
-                        <div class="save" next_c=".konf" next_i="#konfirmasi" prev_c=".d_form" prev_i="#a_akun"><p>Simpan</p></div>
+                        <div class="save" prev_c=".d_form" prev_i="#a_akun"><p>Simpan</p></div>
                     </div>
                 </div>
                 
-                <div class="konf" id="konfirmasi" >
-                    <div id="pertanyaan_akhir">
-                        <h4>Dengan ini saya menyatakan:</h4>
-                        <p>
-                            informasi yang saya masukkan mengenai detail akun administrator adalah benar.
-                        </p>
-                    </div>
-                    <div class="nav">
-                    
-                        <table>
-                        <tr>
-                            <td>
-                                <input type="button" class="back" next_c=".d_form" next_i="#a_akun" prev_c=".konf" prev_i="#konfirmasi" value="Kembali">
-                            </td>
-                            <td>
-                                <input type="submit" class="saves" name="proses" value="Proses">
-                            </td>
-                        </tr>	
-                        </table>
-                    </div>
-				</div>
+               
              </form>
-          </div>
-          
-          <div id="logout">
-          	<?php
-				include "M_login.php";
+	
+</div>
+</div>
+	<div id="logout">
+        <?php
+			if(isset($_SESSION['username'])){
+				include "app/model/M_login.php";
 				$a=new M_login();
 				$a->logout();
 				header("location: index.php");
-			?>
-          </div>
+			}
+		?>
+    </div>
+
          
