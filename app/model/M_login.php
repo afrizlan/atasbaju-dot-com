@@ -2,7 +2,7 @@
 
 	class M_login{
 		function __construct(){
-		
+			
 		}
 		
 		function check($username,$password){

@@ -1,11 +1,42 @@
-#daftar #form #h_akun{
+#admin{
+	width: 100%;
+	background-color: #DFE2E2;
+	margin: auto;
+}
+
+#c_akun{
+
+}
+
+#hasil_cari{
+
+}
+
+#toShow{
 	display:none;
 }
 
-#daftar #form #a_akun{
-	display:none;
+#boxes #c_akun{
+	cursor:pointer;
+	background-color: #04DBCF;
 }
 
-#daftar #form #konfirmasi{
-	display:none;
+#boxes #a_akun{
+	cursor:pointer;
+	background-color: #62FE32;
+}
+
+#boxes #logout{
+	cursor:pointer;
+	background-color: #D952FB;
+}
+
+#right{
+	float:right;
+	margin: 18 33px 0 0
+}
+
+#boxes ul li{
+	display: block;
+	margin: 0 0 0 0;
 }
