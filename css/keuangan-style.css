@@ -156,7 +156,7 @@ fieldset{
 .right input[type='date'],
 .right select{
 	width:116px;
-	height:31px;
+	height:23px;
 	margin:0 0 0 0;
 }
 
@@ -181,7 +181,7 @@ fieldset{
 
 #pemasukan{
 	width:449px;
-	height:135px;
+	height:245px;
 	clear:both;
 	margin:0 0 0 36px;
 	overflow-y:scroll;
@@ -192,3 +192,37 @@ input[type='date']{
 	
 }
 
+.add_filter{
+	width:380px;
+	height:329px;
+	background-color:#727070;
+	position:absolute;
+	display:none;
+	overflow-y: scroll;
+	margin-left: 75px;
+	border-radius:10px;
+}
+
+.bottom_cont{
+	margin:0 9px 0 0;
+}
+
+.add_filter label{
+	color:white;
+}
+
+.close_filter{
+	margin: 0 4px 0 0;
+	float: right;
+	color: white;
+	cursor:pointer;
+}
+
+.remove_filter{
+	color:white;
+}
+
+#edit_filter{
+	margin-left: 410px;
+	position: absolute;
+}

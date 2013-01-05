@@ -82,4 +82,9 @@
 			return $data;
 		}
 		
+		function get_list_produk(){
+			$data=array();
+			$query="select * from produk";
+		}
+		
 	}
