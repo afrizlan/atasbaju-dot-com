@@ -1,5 +1,7 @@
 <?php include "app/model/M_keuangan.php";?>
 <link rel="stylesheet" type="text/css" href="css/keuangan-style.css"></link>
+<script type="text/javascript" src="js/keuangan.js"></script>
+
 <div id="top" class="box">
 	
 	<div id="top_left" class="left">
@@ -11,6 +13,7 @@
 						<td><label>Merk Baju</label></td>
 						<td>
 							<select name="merk">
+							
 								<option value="merk1">Merk1</option>
 								<option value="merk2">Merk2</option>
 								<option value="merk2">Merk3</option>
@@ -105,39 +108,44 @@
 	</div>
 
 	<div id="top_right" class="right">
+		<input type="button" id="edit_filter" value="edit filter"></input>
+		<div class='add_filter'>
+			<div class="close_filter">x</div>
+			<form method>
+				<table>
+					<tr>
+						<td><label>Periode</label></td>
+						<td>
+							<input type="date" name="tanggal_awal"></input>
+						</td>
+						<td>
+							<input type="date" name="tanggal_awal"></input>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Kategori</label></td>
+						<td>
+							<select name="kategori">
+								<option value="nama">Nama Baju</option>
+								<option value="merk">Merk Baju</option>
+								<option value="tanggal">Tanggal Terjual</option>
+								<option value="jumlah">Jumlah Terjual</option>
+								<option value="pilih" selected>Pilih Kategori</option>
+							</select>
+						</td>
+						<td>
+							<input type="text" name="nilai" placeholder="nilai kategori"></input>
+						</td>
+						<td></td>
+					</tr>
+				</table>
+				<div class="bottom_cont">
+					<input class="button" type="submit" name="simpan2" value="Cari"></input>
+					<input class="button tambah_filter" type="button" name="tambah" value="Tambah Filter"></input>
+				</div>
+			</form>
+		</div>
 		<h3>Data Pemasukan</h3>
-		<form>
-			<table>
-				<tr>
-					<td colspan="2"><label>Filter Berdasarkan : </label></td>
-					<td colspan="2"><label>Periode : </label></td>
-				</tr>
-				<tr>
-					<td>
-						<select name="kategori">
-							<option value="nama">Nama Baju</option>
-							<option value="merk">Merk Baju</option>
-							<option value="tanggal">Tanggal Terjual</option>
-							<option value="jumlah">Jumlah Terjual</option>
-							<option value="pilih" selected>Pilih Kategori</option>
-						</select>
-					</td>
-					<td>
-						<input type="text" name="nilai" placeholder="nilai kategori"></input>
-					</td>
-					<td>
-						<input type="date" name="tanggal_awal"></input>
-					</td>
-					<td>
-						<input type="date" name="tanggal_awal"></input>
-					</td>
-				</tr>
-			</table>
-			<div class="bottom_cont">
-				<input class="button" type="submit" name="simpan2" value="Simpan"></input>
-				<input class="button" type="button" name="tambah" value="Tambah Filter"></input>
-			</div>
-		</form>
 		<div id="thead">
 			<table>
 				<tr>
@@ -327,3 +335,4 @@
 	</div>
 	
 </div>
+
