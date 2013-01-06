@@ -1,4 +1,5 @@
 <?php
+
 	class M_keuangan{
 		
 		function __construct(){
@@ -23,7 +24,8 @@
 					"'".$produk['warna']."',".
 					"'".$produk['ukuran']."',".
 					"".$produk['jumlah'].",".
-					"'".$produk['tanggal']."'".
+					"'".$produk['tanggal']."',".
+					"'".$produk['jenis']."'".
 					")";
 			$query2="insert into pembeli values(".
 					($max+1).",".
@@ -35,20 +37,26 @@
 			mysql_query($query2);
 			
 		}
-		function get_penjualan(){
+		function get_penjualan($p=''){
 			$data=array();
-			$query="select * from penjualan";
+			$query='';
+			
+			if($p=='')	$query="select * from penjualan";
+			else 		$query="select * from penjualan where ".$p;
+			//echo $query;
 			$result=mysql_query($query);
 			while($row=mysql_fetch_array($result)){
 				$data[]=array(
-					'merk'=>$row['merk'],
-					'warna'=>$row['warna'],
-					'ukuran'=>$row['ukuran'],
-					'jumlah'=>$row['jumlah'],
-					'tanggal'=>$row['tanggal']
+					'jenis'		=>$row['jenis'],
+					'merk'		=>$row['merk'],
+					'warna'		=>$row['warna'],
+					'ukuran'	=>$row['ukuran'],
+					'jumlah'	=>$row['jumlah'],
+					'tanggal'	=>$row['tanggal']
 				);
 			}
-			return $data;
+			if($p=='')	return $data;
+			else 		echo json_encode($data);
 		}
 		
 		function input_pengeluaran($produk){
@@ -60,31 +68,43 @@
 					"'".$produk['ukuran']."',".
 					"".$produk['jumlah'].",".
 					"'".$produk['tanggal']."',".
-					"'".$produk['keterangan']."'".
+					"'".$produk['keterangan']."',".
+					"'".$produk['jenis']."'".
 					")";
-					echo $query;
 			mysql_query($query);
 		}
 		
-		function get_pengeluaran(){
+		function get_pengeluaran($p=''){
 			$data=array();
-			$query="select * from pengeluaran";
+			$query='';
+			
+			if($p=='')	$query="select * from pengeluaran";
+			else 		$query="select * from pengeluaran where ".$p;
+			//echo $query;
 			$result=mysql_query($query);
 			while($row=mysql_fetch_array($result)){
 				$data[]=array(
-					'merk'=>$row['merk'],
-					'warna'=>$row['warna'],
-					'ukuran'=>$row['ukuran'],
-					'jumlah'=>$row['jumlah'],
-					'tanggal'=>$row['tanggal']
+					'jenis'		=>$row['jenis'],
+					'merk'		=>$row['merk'],
+					'warna'		=>$row['warna'],
+					'ukuran'	=>$row['ukuran'],
+					'jumlah'	=>$row['jumlah'],
+					'tanggal'	=>$row['tanggal']
 				);
 			}
-			return $data;
+			if($p=='')	return $data;
+			else 		echo json_encode($data);
 		}
 		
-		function get_list_produk(){
-			$data=array();
-			$query="select * from produk";
-		}
-		
+	}
+
+$function='';
+	if(isset($_GET['f'])){
+		$function=$_GET['f'];
+		$keuangan=new M_keuangan();
+		if(isset($_GET['p'])){
+			$parameter=$_GET['p'];
+			$keuangan->$function($parameter);
+			
+		}else $keuangan->$function();
 	}
