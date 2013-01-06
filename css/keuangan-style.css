@@ -85,7 +85,7 @@ input[type="password"],
 input[type="date"],
 select{
 	width:130px;
-	height:30px;
+	height:25px;
 	/*color:white;*/
 	margin:0 0 0 13px;
 	/*background-color:#05C4B9;*/
@@ -198,7 +198,6 @@ input[type='date']{
 	background-color:#727070;
 	position:absolute;
 	display:none;
-	overflow-y: scroll;
 	margin-left: 75px;
 	border-radius:10px;
 }
@@ -223,6 +222,13 @@ input[type='date']{
 }
 
 #edit_filter{
-	margin-left: 410px;
+	
 	position: absolute;
+	
+}
+
+.edit_filter{
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	margin-top: 20px;
 }

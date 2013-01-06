@@ -24,6 +24,13 @@
 		$footer=$_GET['footer'];
 	}
 	
-	include $path['view'].$header.".php";
-	include $path['view'].$content.".php";
-	include $path['view'].$footer.".php";
+	if(isset($_GET['m'])){
+		include $path['model'].$_GET['m'].".php";
+	}else{
+		include $path['view'].$header.".php";
+		include $path['view'].$content.".php";
+		include $path['view'].$footer.".php";
+	}
+	
+	
+	

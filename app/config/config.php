@@ -5,6 +5,7 @@
 	$pass="";
 	
 	$path['view']="app/view/";
+	$path['model']="app/model/";
 	
 	/*======== page title =========*/
 	$title['login']="Login Page";
