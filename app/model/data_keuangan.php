@@ -1,6 +1,6 @@
 <?php
 
-	class M_keuangan{
+	class Data_keuangan{
 		
 		function __construct(){
 		
@@ -41,8 +41,8 @@
 			$data=array();
 			$query='';
 			
-			if($p=='')	$query="select * from penjualan";
-			else 		$query="select * from penjualan where ".$p;
+			if($p=='' or $p=='all')	$query="select * from penjualan";
+			else 					$query="select * from penjualan where ".$p;
 			//echo $query;
 			$result=mysql_query($query);
 			while($row=mysql_fetch_array($result)){
@@ -78,7 +78,7 @@
 			$data=array();
 			$query='';
 			
-			if($p=='')	$query="select * from pengeluaran";
+			if($p=='' or $p=='all')	$query="select * from pengeluaran";
 			else 		$query="select * from pengeluaran where ".$p;
 			//echo $query;
 			$result=mysql_query($query);
@@ -101,7 +101,7 @@
 $function='';
 	if(isset($_GET['f'])){
 		$function=$_GET['f'];
-		$keuangan=new M_keuangan();
+		$keuangan=new Data_keuangan();
 		if(isset($_GET['p'])){
 			$parameter=$_GET['p'];
 			$keuangan->$function($parameter);

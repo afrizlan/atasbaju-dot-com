@@ -1,4 +1,5 @@
-<?php include "app/model/M_keuangan.php";?>
+<?php include "app/controller/c_data_pemasukan.php";?>
+<?php include "app/controller/c_data_pengeluaran.php";?>
 <link rel="stylesheet" type="text/css" href="css/keuangan-style.css"></link>
 <script type="text/javascript" src="js/keuangan.js"></script>
 
@@ -7,6 +8,7 @@
 	<div id="top_left" class="left">
 		<h3>Penjualan</h3>
 		<form method="post" id="form_penjualan">
+			<input type="hidden" name="func" value="input_pemasukan"></input>
 			<div class="left_form" id="cb">
 				<table>
 					<tr>
@@ -80,11 +82,11 @@
 			</div>
 			<div id="button_cont">
 				<input class="button" type="submit" name="simpan1" value="Simpan"></input>
-				<input class="button" type="button" name="batal" value="Batal"></input>
+				<input class="button" type="reset" name="batal" value="Batal"></input>
 			</div>
 		</form>
 		<?php
-			if(isset($_POST['simpan1'])){
+			/*if(isset($_POST['simpan1'])){
 				$all_data=array(
 					$_POST['jenis'],
 					$_POST['merk'],
@@ -109,12 +111,12 @@
 						'email'=>$_POST['e_pembeli']
 						
 					);
-					$keuangan=new M_keuangan();
+					$keuangan=new Data_keuangan();
 					$result=$keuangan->input_penjualan($produk,$pembeli);
 				}else{
 					echo "data yang anda masukkan tidak lengkap";
 				}
-			}
+			}*/
 		?>
 	</div>
 
@@ -143,7 +145,7 @@
 								<option value="jumlah">Jumlah Terjual</option>
 								<option value="ukuran">Ukuran Baju</option>
 								<option value="warna">Warna Baju</option>
-								<option value="pilih" selected>Pilih Kategori</option>
+								<option value="" selected>Pilih Kategori</option>
 							</select>
 						</td>
 						<td>
@@ -157,11 +159,7 @@
 					<input class="button tambah_filter" type="button" name="tambah" value="Tambah Filter"></input>
 				</div>
 			</form>
-			<?php
-				/*if(isset($_POST['simpan2'])){
-					foreach
-				}*/
-			?>
+			
 		</div>
 		<h3>Data Pemasukan</h3>
 		<div id="thead">
@@ -180,8 +178,8 @@
 			<table>
 			<tbody>
 				<?php
-				$keuangan=new M_keuangan();
-				$data=$keuangan->get_penjualan();
+				$data_pemasukan	= new c_data_pemasukan();
+				$data			= $data_pemasukan->get_all_data();
 					foreach ($data as $row){
 						echo "<tr>".
 								"<td>".$row["tanggal"]."</td>".
@@ -206,6 +204,7 @@
 	<div id="bottom_left" class="left">
 		<h3>Pengeluaran</h3>
 		<form method="post">
+		<input type="hidden" name="func_d" value="input_pengeluaran"></input>
 			<div class="left_form">
 				<table>
 					<tr>
@@ -266,11 +265,11 @@
 			</div>
 			<div class="button_cont">
 				<input class="button" type="submit" name="simpan3" value="Simpan"></input>
-				<input class="button" type="button" name="batal" value="Batal"></input>
+				<input class="button" type="reset" name="batal" value="Batal"></input>
 			</div>
 		</form>
 		<?php
-			if(isset($_POST['simpan3'])){
+			/*if(isset($_POST['simpan3'])){
 				$all_data=array(
 					$_POST['jenis'],
 					$_POST['merk'],
@@ -289,12 +288,12 @@
 						'tanggal'		=> $_POST['tanggal'],
 						'keterangan'	=> $_POST['keterangan']
 					);
-					$keuangan=new M_keuangan();
+					$keuangan=new C_data_pengeluaran();
 					$result=$keuangan->input_pengeluaran($produk);
 				}else{
 					echo "data yang anda masukkan tidak lengkap";
 				}
-			}
+			}*/
 		?>
 	</div>
 
@@ -323,7 +322,7 @@
 								<option value="jumlah">Jumlah Terjual</option>
 								<option value="ukuran">Ukuran Baju</option>
 								<option value="warna">Warna Baju</option>
-								<option value="pilih" selected>Pilih Kategori</option>
+								<option value="" selected>Pilih Kategori</option>
 							</select>
 						</td>
 						<td>
@@ -360,8 +359,8 @@
 			<table>
 			<tbody>
 				<?php
-				$keuangan=new M_keuangan();
-				$data=$keuangan->get_pengeluaran();
+				$data_pengeluaran	= new c_data_pengeluaran();
+				$data				= $data_pengeluaran->get_all_data();
 					foreach ($data as $row){
 						echo "<tr>".
 								"<td>".$row["tanggal"]."</td>".
