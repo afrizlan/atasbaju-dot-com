@@ -33,23 +33,34 @@
 		
 		function populate_data(){
 			var div	= $(this).parents("div:eq(2)").attr("id");
-			var f='';
-			if(div=="top_right") 	f='get_penjualan';
-			else					f='get_pengeluaran';
+			var func_d='';
+			var url='';
+			if(div=="top_right"){
+				func_d='get_penjualan_by_category';
+				url='http://localhost/atasbaju/app/controller/c_data_pemasukan.php?p=';
+			}
+			else{
+				func_d='get_pengeluaran_by_category';
+				url='http://localhost/atasbaju/app/controller/c_data_pengeluaran.php?p=';
+			}
 			var row = "#"+div+" .add_filter table tr";
 			var val = "";
 			for(var i=1; i<$(row).length; i++){
 				var kategori	= row+":eq("+i+") td:eq(1) option:selected";
 				var value		= row+":eq("+i+") td:eq(2) .nilai";
-				val+=" and "+$(kategori).val()+"='"+$(value).val()+"'";
+				
+				if($(kategori).val()!="") 	val+=" and "+$(kategori).val()+"='"+$(value).val()+"'";
 				
 			}
 			val=val.substr(4);
+			if(val=="") val="all";
 			
+			console.log(val);
 			jQuery.ajax({
 				type: 'POST',
-				url: "http://localhost/atasbaju?m=M_keuangan&f="+f+"&p="+val,
-				dataType : 'json',
+				data: {func:func_d,via_ajax:'f'},
+				url: url+""+val,
+				dataType : 'JSON',
 				success: function(data){
 					var html = "";
 					for(var key in data){
@@ -65,9 +76,11 @@
 					
 					$("#"+div+" .data_table table tbody").html(html);
 					$('.add_filter').slideUp("normal");
+					console.log(data);
 				},
-				error:  function(data){
-				
+				error:  function(xhr, ajaxOptions, thrownError){
+					alert(xhr.status);
+					alert(thrownError);
 				}
 			});
 		}

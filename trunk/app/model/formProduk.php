@@ -52,7 +52,6 @@ class formProduk{
 	
 	function data_list($p){
 		$query	= "select distinct(".$p[2].") from produk where ".$p[1]."='".$p[0]."'";
-		//echo $query;
 		$result	= mysql_query($query);
 		$data	= array();
 		while($row=mysql_fetch_array($result)){
