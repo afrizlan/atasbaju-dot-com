@@ -2,7 +2,7 @@
 
 	include "app/config/config.php";
 	include "app/model/connect.php";
-	
+	echo "a";
 	$title=$title['home'];
 	$header=$header['home'];
 	$content=$content['home'];
