@@ -1,14 +1,3 @@
-<?php
-	$host="localhost"; 
-	$username="root"; 
-	$password=""; 
-	mysql_connect("$host", "$username", "$password")or die("cannot connect server "); 
-	mysql_select_db('atasbajucom')or die("cannot select DB");
-
-	$jenis_query = "SELECT * FROM kegiatan";
-	$jenis_result = mysql_query($jenis_query);
-?>
-
 <div id="tambah_promosi_k">
 	
 	<div id="title">
@@ -16,10 +5,18 @@
 	</div>
 
 	<div id="form">
-	<form method="post" action="tPromosi.php">
+	<form method="post" action="tPromosi_k.php">
 	<div class="tp_form" id="tp_form_p">
 			<table>
-
+				<tr>
+						<td>Pilih Kegiatan</td>
+						<td>:</td>
+						<td><label class="control-label" for="p_keg"></label>
+                    	<select type="text" name="p_keg">
+		            	</select>
+                    	<option value="none">Pilih Salah Satu</option>	
+						</td>
+				 </tr>
                  <tr>
 					<td>Keterangan</td>
 					<td>:</td>
@@ -34,11 +31,9 @@
 					</td>
 				</tr>	
 			</table>
-	
 	</div>
 	</form>
 	</div>
-	
 </div>
 
 <?php
@@ -47,14 +42,13 @@ include ("connect.php");
 if(isset($_POST["simpan"]))
 {  
 
-	$jenis_produk = $_POST["j_produk"];
-    $merk = $_POST["merk"];
+	$jenis_kegiatan = $_POST["p_keg"];
 	$keterangan_tambahan = $_POST["keterangan"];
 	      
-    $query="INSERT INTO promosi( jenis_produk, merk, keterangan_tambahan, ) 
-		VALUES( '$jenis_produk', '$merk', '$keterangan_tambahan' )";
+    $query="INSERT INTO promosi( jenis_kegiatan, keterangan_tambahan, ) 
+		VALUES( '$jenis_kegiatan', '$keterangan_tambahan' )";
 		   
-		if(strlen($jenis_produk&&$merk&&$keterangan_tambahan)<1){
+		if(strlen($jenis_kegiatan&&$keterangan_tambahan)<1){
 			echo "Semua data harus terisi!";
 	}else{
 		   
