@@ -205,9 +205,10 @@
 					);
 				
 					$login=array(
-						'username'=>$_POST['username'],
-						'password'=>$_POST['password'],
-						'k_password'=>$_POST['k_password']
+						'username' 	=> $_POST['username'],
+						'password'	=> $_POST['password'],
+						'k_password'=> $_POST['k_password'],
+						'peran'		=> 1
 					);
 					$perusahaan=array(
 						'n_per'=>$_POST['n_per'],

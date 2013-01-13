@@ -4,52 +4,56 @@ class formAdmin{
 				
 	}
 
-	function editAdmin(){
-		/*$nama = $_POST['nama'];
-		$tgl_lahir = $_POST['tgl_lahir'];
-		$alamat = $_POST['alamat'];
-		$jk = $_POST['jk'];
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$email = $_POST['email'];
-		$a = mysql_query("UPDATE akun SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jk='$jk', username='$username, password='$password' email='$email' WHERE id_hp='$_POST[id]'") or die(mysql_error());
-		*/
+	function updateAkun($akun,$login){
 		
-		$query1="update into login ".
-					"values(".$login['username']."',md5('".$login['password']."')) WHERE id_hp='$_POST[id];";
-			
-		$query2="insert into akun ".
-					"values(".$akun['nmama_depan']."','".$akun['nama_belakang']."'".
-					",'".$akun['email']."','".$akun['j_kelamin']."','".$akun['tanggal_lahir']."') WHERE id_hp='$_POST[id];";
+		$query1	=	"update akun ".
+					"set ". 
+					"nama_depan='".$akun['n_depan']."'".
+					",nama_belakang='".$akun['n_belakang']."'".
+					",email='".$akun['email']."'".
+					",j_kelamin='".$akun['j_kelamin']."' ".
+					"where id=".$login['id'];
 		
+		$query2	=	"update login ".
+					"set ". 
+					"username='".$login['username']."'".
+					",peran=".$login['peran']." ".
+					"where id=".$login['id'];
+					
+		echo $query2;
 		mysql_query($query1);
 		mysql_query($query2);
 	}
 	
-	function deleteAdmin(){
-		mysql_query("DELETE FROM akun WHERE id_hp='$_GET[id]'");
-		//header("location:lihat.php");
+	function deleteAdmin($id){
+		mysql_query("DELETE FROM akun WHERE id='".$id."'");
+		mysql_query("DELETE FROM login WHERE id='".$id."'");
+		mysql_query("DELETE FROM perusahaan WHERE id='".$id."'");
+	
 	}
 	
-	/*
-	function getId(){
-		$edit = mysql_query("SELECT * FROM akun WHERE id_hp='$_GET[id]'");
-		$a = mysql_fetch_array($edit);
-	}
-	*/
-	
-	function cariAkun($username,$peran){
-		$lihat = mysql_query("select * from akun,login where akun.id=login.id and login.username='".$username."' and akun.peran='".$peran."' order by akun.id DESC");
-		//$lihat = mysql_query("select * from akun");
+	function cariAkun($query){
+		
+		$q		= "select * from akun,login where akun.id=login.id ".$query." order by akun.id DESC";
+		$lihat 	= mysql_query($q);
+		
 		$data=array();
 		while($row = mysql_fetch_array($lihat)){
+			$peran = $row['peran'];
+			if($peran=="0"){
+				$peran="admin";
+			}else{
+				$peran="pegawai";
+			}
 			$data[]=array(
 				'id'			=> $row['id'],
 				'nama_depan'	=> $row['nama_depan'],
 				'nama_belakang'	=> $row['nama_belakang'],
 				'email'			=> $row['email'],
 				'j_kelamin'		=> $row['j_kelamin'],
-				'tanggal_lahir'	=> $row['tanggal_lahir']
+				'tanggal_lahir'	=> $row['tanggal_lahir'],
+				'peran'			=> $peran,
+				'username'		=> $row['username']
 			);
 		}
 		return $data;
