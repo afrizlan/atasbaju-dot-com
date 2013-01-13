@@ -1,3 +1,14 @@
+<?php
+	$host="localhost"; 
+	$username="root"; 
+	$password=""; 
+	mysql_connect("$host", "$username", "$password")or die("cannot connect server "); 
+	mysql_select_db('atasbajucom')or die("cannot select DB");
+
+	$jenis_query = "SELECT * FROM produk";
+	$jenis_result = mysql_query($jenis_query);
+?>
+
 <div id="tambah_promosi">
 	
 	<div id="title">
@@ -6,7 +17,7 @@
 
 	<div id="form">
 	<form method="post" action="tPromosi.php">
-	  <div class="tp_form" id="tp_form_p">
+	<div class="tp_form" id="tp_form_p">
 			<table>
 				<tr>
 						<td>Jenis Produk</td>
@@ -19,18 +30,24 @@
 						</select></td>
 				 </tr>
 				
-				<tr>
-					<td>Pilih Baju</td>
-					<td>:</td>
-					<td><label class="control-label" for="p_baju"></label>
-                    <select type="text" name="p_baju">
+			   	 <tr>
+						<td>Pilih Baju</td>
+						<td>:</td>
+						<td><label class="control-label" for="p_baju"></label>
+                    	<select type="text" name="p_baju">
+		            	</select>
                     	<option value="none">Pilih Salah Satu</option>
-					    <option>S</option>
-					</select></td>
+					    	<?php
+								while($row = mysql_fetch_array($jenis_result)){
+							?>
+            			<option value="<?php echo $row['jenis_produk']; ?>" onClick="">
+							<?php echo $row['merk']; ?> </option>
+            				<?php } ?>
+						</td>
 				</tr>
                 
                 <tr>
-					<td>Keterangan</td>
+					<td>Keterangan Tambahan</td>
 					<td>:</td>
 					<td colspan="3"><input type="text" name="keterangan" /></td>
 				</tr>
@@ -49,18 +66,31 @@
 	</div>
 	
 </div>
+
 <?php
-	$a=formPromosi;
-	$a->tambahPromosi();
-	if($a){
-		$result=(strlen($jenis_produk&&$jenis_ukuran&&$keterangan)<1){
+include ("connect.php");   
+  
+if(isset($_POST["simpan"]))
+{  
+
+	$jenis_produk = $_POST["j_produk"];
+    $merk = $_POST["merk"];
+	$keterangan_tambahan = $_POST["keterangan"];
+	      
+    $query="INSERT INTO promosi( jenis_produk, merk, keterangan_tambahan, ) 
+		VALUES( '$jenis_produk', '$merk', '$keterangan_tambahan' )";
+		   
+		if(strlen($jenis_produk&&$merk&&$keterangan_tambahan)<1){
 			echo "Semua data harus terisi!";
-			}
-	}else{   
-    	if($result){  
+	}else{
+		   
+    	$result=mysql_query($query);            
+    
+		if($result){  
        		echo "Produk telah tersimpan!";
     	}else{  
        	 	echo "Data produk tidak berhasil disimpan!";  
     	}  
-	}
+	}  
+}
 ?>
