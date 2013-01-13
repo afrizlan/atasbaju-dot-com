@@ -2,7 +2,7 @@
 
 	class M_daftar{
 		function __construct(){
-		
+			echo "masuk";
 		}
 		
 		function insert($login,$akun,$perusahaan=''){
@@ -14,7 +14,8 @@
 			}
 			
 			$query1="insert into login ".
-					"values(".($max+1).",'".$login['username']."',md5('".$login['password']."'));";
+					"values(".($max+1).",'".$login['username']."',md5('".$login['password']."'),".$login['peran'].");";
+					
 			
 			$query2="insert into akun ".
 					"values(".($max+1).",'".$akun['n_depan']."','".$akun['n_belakang']."'".

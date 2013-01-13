@@ -1,4 +1,4 @@
-
+<?php session_start() ?>
   
  	<div id="promosi">
 		<div id="slider">
@@ -68,8 +68,14 @@
 				$password=htmlentities($_POST['password'],ENT_QUOTES);
 				$check=new M_login();
 				$result=$check->check($username,$password);
-				if($result==true){
-					echo "<script>window.location='?content=dashboard&title=selamat+datang'</script>";
+				if($result){
+					if($_SESSION['peran']=="0"){
+						echo "<script>window.location='?content=admin'</script>";
+					}
+					else{
+						echo "<script>window.location='?content=keuangan'</script>";
+					}
+					
 				}else echo "<script>window.location='?content=gagal&title=gagal+login'</script>";
 			}
 		?>

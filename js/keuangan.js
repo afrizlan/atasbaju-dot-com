@@ -37,11 +37,11 @@
 			var url='';
 			if(div=="top_right"){
 				func_d='get_penjualan_by_category';
-				url='http://localhost/atasbaju/app/controller/c_data_pemasukan.php?p=';
+				url='http://localhost/atasbaju/app/controller/c_pemasukan.php?p=';
 			}
 			else{
 				func_d='get_pengeluaran_by_category';
-				url='http://localhost/atasbaju/app/controller/c_data_pengeluaran.php?p=';
+				url='http://localhost/atasbaju/app/controller/c_pengeluaran.php?p=';
 			}
 			var row = "#"+div+" .add_filter table tr";
 			var val = "";
@@ -52,7 +52,7 @@
 				if($(kategori).val()!="") 	val+=" and "+$(kategori).val()+"='"+$(value).val()+"'";
 				
 			}
-			val=val.substr(4);
+			val=val.substr(5);
 			if(val=="") val="all";
 			
 			console.log(val);

@@ -2,7 +2,9 @@
 <script type="text/javascript" src="js/admin.js"></script>
 <?php
 	session_start();
-
+	include "app/model/formAdmin.php";
+	include "app/model/M_daftar.php";
+	$formAdmin	= new formAdmin();
 	if (!isset($_SESSION['username']))
 	{
 		echo "<h1>Anda belum login</h1>";
@@ -46,7 +48,7 @@
 	
 		<div id="hasil_cari">
 			<br><br><h5>Daftar Akun<hr width=700 size=2></h5>
-			<table class="table">
+			<table class="table" style="font-size:14px; border-spacing:0px; width:100%">
 				<font color=white>
 				<tr height="25" bgcolor="#0066FF">
 				<td rowspan="1" valign="middle"><center>No.</center></td>
@@ -55,30 +57,41 @@
 				<td rowspan="1" valign="middle"><center>Username</center></td>
 				<td rowspan="1" valign="middle"><center>Email</center></td>
 				<td rowspan="1" valign="middle"><center>Jenis Kelamin</center></td>
-				<td rowspan=1 valign=center align=center>Edit</td>
-				<td rowspan=1 valign=center align=center>Hapus</td>
+				<td rowspan="1" valign="middle"><center>Peran</center></td>
+				<td rowspan=1 valign=center align=center></td>
+				<td rowspan=1 valign=center align=center></td>
 				</tr>
 				</font>
 				  
 				<?php
-				
-				include "app/model/formAdmin.php";
+				$query='';
 				if(isset($_POST['cari'])){
 					$no = 1;
-					$username=$_POST['username'];
-					$peran=$_POST['peran'];
-					$a = new formAdmin;
-					$data=$a->cariAkun($username,$peran);
+					if($_POST['username']!=""){
+						$query	.= "and login.username='".$_POST['username']."'";
+					}
+					if($_POST['peran']!=""){
+						$peran	= $_POST['peran'];
+						
+						if($peran == "admin"){
+							$query	.= "and login.peran=0";
+						}else{
+							$query	.= "and login.peran=1";
+						}
+						
+					}
+					$data=$formAdmin->cariAkun($query);
 					foreach($data as $row){
 						echo	"<tr>
-									<td align=right>$no.</td>
-									<td align=right>$row[nama_depan]</td>
+									<td>$no.</td>
+									<td>$row[nama_depan]</td>
 									<td>$row[nama_belakang]</td>
+									<td>$row[username]</td>
 									<td>$row[email]</td>
 									<td>$row[j_kelamin]</td>
-									<td>$row[tanggal_lahir]</td>
-									<td align=center><a class=btn btn-primary btn-small href=edit.php?id=$row[id]>Edit</a></li></ul></td>
-									<td align=center><a class=btn btn-primary btn-small href=\"delete.php?id=$row[id]\">Hapus</a></li></ul></td>
+									<td>$row[peran]</td>
+									<td align=center><a class=btn btn-primary btn-small href='http://localhost/atasbaju/?content=edit&id=$row[id]'>Edit</a></li></ul></td>
+									<td align=center><a class=btn btn-primary btn-small href='http://localhost/atasbaju/?content=delete&id=$row[id]'>Hapus</a></li></ul></td>
 								</tr>";
 						$no++;
 						}
@@ -162,9 +175,9 @@
 		</div>
 		
 		<?php
-		include "app/model/M_daftar.php";
 		
-			if (isset($_POST['daftar'])){
+			if(isset($_POST['daftar'])){
+				
 				$all_data=array(
 					$_POST['nama_depan'],
 					$_POST['nama_belakang'],
@@ -175,26 +188,27 @@
 					$_POST['tanggal'],
 					$_POST['username'],
 					$_POST['password'],
-					$_POST['k_password'],
+					$_POST['k_password']
 				);
 				
 				if(!in_array("",$all_data,TRUE)){
 					$akun=array(
-						'nama_depan'=>$_POST['nama_depan'],
-						'nama_belakang'=>$_POST['nama_belakang'],
-						'email'=>$_POST['email'],
-						'j_kelamin'=>$_POST['j_kelamin'],
-						'tanggal_lahir'=>$_POST['tahun']."-".$_POST['bulan']."-".$_POST['tanggal']					
+						'n_depan'		=>$_POST['nama_depan'],
+						'n_belakang'	=>$_POST['nama_belakang'],
+						'email'			=>$_POST['email'],
+						'j_kelamin'		=>$_POST['j_kelamin'],
+						'tanggal'		=>$_POST['tahun']."-".$_POST['bulan']."-".$_POST['tanggal']					
 					);
 				
 					$login=array(
-						'username'=>$_POST['username'],
-						'password'=>$_POST['password'],
-						'k_password'=>$_POST['k_password']
+						'username'	=> $_POST['username'],
+						'password'	=> $_POST['password'],
+						'k_password'=> $_POST['k_password'],
+						'peran'		=> 0
 					);
+					$daftar	= new M_daftar() ;
+					$result	= $daftar->insert($login,$akun);
 					
-					$daftar=new M_daftar;
-					$result=$daftar->insert($akun,$login);
 				}else echo ("data yang anda masukkan tidak lengkap!");
 			}
 		?>
@@ -251,8 +265,6 @@
 		</div>
 		
 		<?php
-		include "app/model/formAdmin.php";
-		
 			if (isset($_POST['update'])){
 				$all_data=array(
 					$_POST['nama_depan'],
@@ -282,8 +294,7 @@
 						'k_password'=>$_POST['k_password']
 					);
 					
-					$update=new formAdmin;
-					$result=$update->editAdmin($akun,$login);
+					$result=$formAdmin->editAdmin($akun,$login);
 				}else echo ("data yang anda masukkan tidak lengkap!");
 			}
 		?>
@@ -291,13 +302,6 @@
 	</div>
 	
 	<div id="logout">
-        <?php
-			if(isset($_SESSION['username'])){
-				include "app/model/M_login.php";
-				$a=new M_login();
-				$a->logout();
-				header("location: index.php");
-			}
-		?>
+      
     </div>
 </div>
