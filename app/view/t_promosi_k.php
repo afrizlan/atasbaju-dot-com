@@ -5,11 +5,11 @@
 	mysql_connect("$host", "$username", "$password")or die("cannot connect server "); 
 	mysql_select_db('atasbajucom')or die("cannot select DB");
 
-	$jenis_query = "SELECT * FROM produk";
+	$jenis_query = "SELECT * FROM kegiatan";
 	$jenis_result = mysql_query($jenis_query);
 ?>
 
-<div id="tambah_promosi">
+<div id="tambah_promosi_k">
 	
 	<div id="title">
 		TAMBAH PROMOSI KEGIATAN
@@ -19,47 +19,40 @@
 	<form method="post" action="tPromosi.php">
 	<div class="tp_form" id="tp_form_p">
 			<table>
-				<tr>
-						<td>Jenis Produk</td>
+            	<tr>
+						<td>Nama Kegiatan</td>
 						<td>:</td>
-						<td><label class="control-label" for="j_produk"></label>
-                    	<select type="text" name="j_produk">
+						<td colspan="3"><input type="text" name="n_keg" placeholder="Contoh: Sale 90% OFF!" /></td>
+				</tr>
+				<tr>
+						<td>Jenis Kegiatan</td>
+						<td>:</td>
+						<td><label class="control-label" for="j_kegiatan"></label>
+                    	<select type="text" name="j_kegiatan">
                         	<option value="none">Pilih Salah Satu</option>
-					    	<option value="kemeja">Kemeja</option>
- 					    	<option value="kaos">Kaos</option>
+					    	<option value="kemeja">Promosi Produk</option>
+ 					    	<option value="kaos">Promosi Kegiatan</option>
 						</select></td>
 				 </tr>
-				
-			   	 <tr>
-						<td>Pilih Baju</td>
-						<td>:</td>
-						<td><label class="control-label" for="p_baju"></label>
-                    	<select type="text" name="p_baju">
-		            	</select>
-                    	<option value="none">Pilih Salah Satu</option>
-					    	<?php
-								while($row = mysql_fetch_array($jenis_result)){
-							?>
-            			<option value="<?php echo $row['jenis_produk']; ?>" onClick="">
-							<?php echo $row['merk']; ?> </option>
-            				<?php } ?>
-						</td>
-				</tr>
-                
-                <tr>
-					<td>Keterangan Tambahan</td>
+                 <tr>
+					<td>Tempat Pelaksanaan</td>
+					<td>:</td>
+					<td colspan="3"><input type="text" name="tempat_p" /></td>
+  				 </tr>
+                 <tr>
+					<td>Keterangan</td>
 					<td>:</td>
 					<td colspan="3"><input type="text" name="keterangan" /></td>
-				</tr>
+  				 </tr>
 			</table>
 			
-		<table>
+		    <table>
 				<tr>
 					<td>
 						<input type="submit" class="saves" name="simpan" value="Simpan">
 					</td>
 				</tr>	
-			  </table>
+			</table>
 	
 	</div>
 	</form>

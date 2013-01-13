@@ -78,15 +78,15 @@ if(isset($_POST["simpan"]))
 	$keterangan_tambahan = $_POST["keterangan"];
 	      
     $query="INSERT INTO promosi( jenis_produk, merk, keterangan_tambahan, ) 
-		VALUES( '$jenis_produk', '$merk', '$keterangan_tambahan' )";
+			VALUES( '$jenis_produk', '$merk', '$keterangan_tambahan' )";
 		   
-		if(strlen($jenis_produk&&$merk&&$keterangan_tambahan)<1){
+	if(strlen($jenis_produk&&$merk&&$keterangan_tambahan)<1){
 			echo "Semua data harus terisi!";
 	}else{
 		   
     	$result=mysql_query($query);            
     
-		if($result){  
+	if($result){  
        		echo "Produk telah tersimpan!";
     	}else{  
        	 	echo "Data produk tidak berhasil disimpan!";  
