@@ -1,70 +1,53 @@
-<div id="tambah">
+<?php
+	$host="localhost"; 
+	$username="root"; 
+	$password=""; 
+	mysql_connect("$host", "$username", "$password")or die("cannot connect server "); 
+	mysql_select_db('atasbajucom')or die("cannot select DB");
+
+	$jenis_query = "SELECT * FROM produk";
+	$jenis_result = mysql_query($jenis_query);
+?>
+
+<div id="tambah_promosi">
 	
 	<div id="title">
-		TAMBAH PRODUK
+		TAMBAH PROMOSI
 	</div>
 
 	<div id="form">
-	<form method="post" action="tProduk.php">
-	  <div class="t_form" id="t_form_p">
+	<form method="post" action="tPromosi.php">
+	<div class="tp_form" id="tp_form_p">
 			<table>
 				<tr>
-					<td>Nomor ID</td>
-					<td>:</td>
-					<td colspan="3"><input type="text" name="n_id" placeholder="Contoh: 0123456789" /></td>
-				</tr>
-                
-				<tr>
-					<td>Jenis Produk</td>
-					<td>:</td>
-					<td><label class="control-label" for="j_produk"></label>
-                    <select type="text" name="j_produk">
-                    	<option>Pilih salah satu</option>
-					    <option>Kemeja</option>
- 					    <option>Kaos</option>
-					</select></td>
-				</tr>
+						<td>Jenis Produk</td>
+						<td>:</td>
+						<td><label class="control-label" for="j_produk"></label>
+                    	<select type="text" name="j_produk">
+                        	<option value="none">Pilih Salah Satu</option>
+					    	<option value="kemeja">Kemeja</option>
+ 					    	<option value="kaos">Kaos</option>
+						</select></td>
+				 </tr>
 				
-                <tr>
-					<td>Merk</td>
-					<td>:</td>
-					<td colspan="3"><input type="text" name="merk" placeholder="Contoh: Djay Collection" /></td>
-				</tr>
-                
-				<tr>
-					<td>Jenis Ukuran</td>
-					<td>:</td>
-					<td><label class="control-label" for="j_ukuran"></label>
-                    <select type="text" name="j_ukuran">
-                    	<option>Pilih salah satu</option>
-					    <option>S</option>
- 					    <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                        <option>XXL</option>
-					</select></td>
-				</tr>
-                
-				<tr>
-					<td>Jumlah</td>
-					<td>:</td>
-					<td colspan="3"><input type="text" name="jumlah" placeholder="Contoh : 99" /></td>
-				</tr>
-                
-				<tr>
-					<td>Warna</td>
-					<td>:</td>
-					<td colspan="3"><input type="text" name="warna" placeholder="Contoh : hitam" /></td>
+			   	 <tr>
+						<td>Pilih Baju</td>
+						<td>:</td>
+						<td><label class="control-label" for="p_baju"></label>
+                    	<select type="text" name="p_baju">
+		            	</select>
+                    	<option value="none">Pilih Salah Satu</option>
+					    	<?php
+								while($row = mysql_fetch_array($jenis_result)){
+							?>
+            			<option value="<?php echo $row['jenis_produk']; ?>" onClick="">
+							<?php echo $row['merk']; ?> </option>
+            				<?php } ?>
+						</td>
 				</tr>
                 
                 <tr>
-					<td>Harga</td>
-					<td>:</td>
-					<td colspan="3"><input type="text" name="harga" placeholder="Contoh : 125000" /></td>
-				</tr>
-                
-                <tr>
-					<td>Keterangan</td>
+					<td>Keterangan Tambahan</td>
 					<td>:</td>
 					<td colspan="3"><input type="text" name="keterangan" /></td>
 				</tr>
@@ -83,11 +66,12 @@
 	</div>
 	
 </div>
+
 <?php
-	$a=formProduk;
-	$a->tambahProduk();
+	$a=formPromosi;
+	$a->tambahPromosi();
 	if($a){
-		$result=(strlen($idnum&&$jenis_produk&&$jenis_ukuran&&$merk&&$jumlah&&$warna&&$harga)<1){
+		$result=(strlen($jenis_produk&&$merk&&$keterangan_tambahan)<1){
 			echo "Semua data harus terisi!";
 			}
 	}else{   
