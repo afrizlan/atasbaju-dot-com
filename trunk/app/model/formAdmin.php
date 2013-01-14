@@ -19,8 +19,6 @@ class formAdmin{
 					"username='".$login['username']."'".
 					",peran=".$login['peran']." ".
 					"where id=".$login['id'];
-					
-		echo $query2;
 		mysql_query($query1);
 		mysql_query($query2);
 	}
