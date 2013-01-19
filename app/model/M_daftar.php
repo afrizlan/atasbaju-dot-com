@@ -33,5 +33,10 @@
 			mysql_query($query2);
 			if($perusahaan!='') mysql_query($query3);
 			
-			}
+			echo 	"<script>
+						alert('terima kasih telah mendaftar, silahkan login untuk menggunakan modul');
+						window.location='http://localhost/atasbaju';
+					</script>";
+			
+		}
 	}

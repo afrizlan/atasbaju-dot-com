@@ -243,3 +243,8 @@ input[type='date']{
 	border-bottom-left-radius: 10px;
 	margin-top: 20px;
 }
+
+#footer{
+	margin-top:50px;
+	!important;
+}

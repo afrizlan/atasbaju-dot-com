@@ -90,8 +90,8 @@
 									<td>$row[email]</td>
 									<td>$row[j_kelamin]</td>
 									<td>$row[peran]</td>
-									<td align=center><a class=btn btn-primary btn-small href='http://localhost/atasbaju/?content=edit&id=$row[id]'>Edit</a></li></ul></td>
-									<td align=center><a class=btn btn-primary btn-small href='http://localhost/atasbaju/?content=delete&id=$row[id]'>Hapus</a></li></ul></td>
+									<td align=center><a style='text-decoration:underline;color:blue;' class=btn btn-primary btn-small href='http://localhost/atasbaju/?content=edit&id=$row[id]'>Edit</a></li></ul></td>
+									<td align=center><a style='text-decoration:underline;color:blue;' class=btn btn-primary btn-small href='http://localhost/atasbaju/?content=delete&id=$row[id]'>Hapus</a></li></ul></td>
 								</tr>";
 						$no++;
 						}

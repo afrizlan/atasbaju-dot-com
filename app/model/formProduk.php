@@ -24,18 +24,50 @@ class formProduk{
 			$warna = $_POST["warna"];	
 			$harga = $_POST["harga"];
 			$keterangan = $_POST["keterangan"];
-			//$datetime=date("d-m-y h:i:s");
-			  
 			$query="INSERT INTO produk( idnum, jenis_produk, merk, jenis_ukuran, jumlah, warna, harga, keterangan,  tanggal_masuk ) 
 				VALUES( '$idnum', '$jenis_produk', '$merk', '$jenis_ukuran', '$jumlah', '$warna', '$harga', '$keterangan', now() )";
 			$result=mysql_query($query);
 		}
 	}
 	
+	function updateProduk($data){
+		$query =	"update produk set ".
+					"jenis_produk='".$data['jenis']."',".
+					"merk='".$data['merk']."',".
+					"jenis_ukuran='".$data['ukuran']."',".
+					"jumlah='".$data['jumlah']."',".
+					"warna='".$data['warna']."',".
+					"harga='".$data['harga']."' ".
+					"where idnum=".$data['id'];
+		$result	=	mysql_query($query);
+		if($result){
+			echo "<script>alert(data berhasil di ubah)</script>";
+		}
+	}
+	
 	function cariProduk(){
-		$cari = $_GET['cari'];
-		$query = "SELECT * FROM produk WHERE warna LIKE '%" . $cari . "%'";
+		$cari 	= $_GET['cari'];
+		$query 	= "SELECT * FROM produk WHERE warna LIKE '%" . $cari . "%'";
 		$result = mysql_query($query, $database);
+	}
+	
+	function cariProduk_id($query){
+		$result	= mysql_query($query);
+		$data=array();
+		while($row=mysql_fetch_array($result)){
+			$data[]=array(
+				'merk'		=> $row['merk'],
+				'warna'		=> $row['warna'],
+				'harga'		=> $row['harga'],
+				'ukuran'	=> $row['jenis_ukuran'],
+				'jumlah'	=> $row['jumlah']
+			);
+		}
+		return $data;
+	}
+	
+	function deleteProduk($id){
+		mysql_query("delete from produk where idnum='".$id."'");
 	}
 	
 	function jenis_baju(){
