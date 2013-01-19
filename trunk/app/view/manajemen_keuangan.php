@@ -1,20 +1,14 @@
-<?php include "app/controller/c_data_pemasukan.php";?>
-<?php include "app/controller/c_data_pengeluaran.php";?>
+<?php include "app/controller/c_pemasukan.php";?>
+<?php include "app/controller/c_pengeluaran.php";?>
 <link rel="stylesheet" type="text/css" href="css/keuangan-style.css"></link>
 <script type="text/javascript" src="js/keuangan.js"></script>
-<a href="http://localhost/atasbaju?content=s_produk">
-		<div id="ke_manajemen_produk" style="margin: 4px 0 9px 7px;
-font-weight: bold;
-color: rgb(129, 126, 126);">
-			<< Modul Manajemen Produk
-		</div>
-	</a>
+
 <div id="top" class="box">
 	
 	<div id="top_left" class="left">
 		<h3>Penjualan</h3>
 		<form method="post" id="form_penjualan">
-			<input type="hidden" name="func" value="input_pemasukan"></input>
+			<!--<input type="hidden" name="func" value="input_pemasukan"></input>-->
 			<div class="left_form" id="cb">
 				<table>
 					<tr>
@@ -91,39 +85,6 @@ color: rgb(129, 126, 126);">
 				<input class="button" type="reset" name="batal" value="Batal"></input>
 			</div>
 		</form>
-		<?php
-			/*if(isset($_POST['simpan1'])){
-				$all_data=array(
-					$_POST['jenis'],
-					$_POST['merk'],
-					$_POST['warna'],
-					$_POST['ukuran'],
-					$_POST['jumlah'],
-					$_POST['tanggal'],
-					$_POST['n_pembeli']
-				);
-				if(!in_array("",$all_data,TRUE)){
-					$produk=array(
-						'jenis'		=> $_POST['jenis'],
-						'merk'		=> $_POST['merk'],
-						'warna'		=> $_POST['warna'],
-						'ukuran'	=> $_POST['ukuran'],
-						'jumlah'	=> $_POST['jumlah'],
-						'tanggal'	=> $_POST['tanggal']
-					);
-					$pembeli=array(
-						'nama'=>$_POST['n_pembeli'],
-						'hp'=>$_POST['hp_pembeli'],
-						'email'=>$_POST['e_pembeli']
-						
-					);
-					$keuangan=new Data_keuangan();
-					$result=$keuangan->input_penjualan($produk,$pembeli);
-				}else{
-					echo "data yang anda masukkan tidak lengkap";
-				}
-			}*/
-		?>
 	</div>
 
 	<div id="top_right" class="right">
@@ -184,8 +145,8 @@ color: rgb(129, 126, 126);">
 			<table>
 			<tbody>
 				<?php
-				$data_pemasukan	= new c_data_pemasukan();
-				$data			= $data_pemasukan->get_all_data();
+				$pemasukan	= new C_pemasukan();
+				$data		= $pemasukan->get_all_data();
 					foreach ($data as $row){
 						echo "<tr>".
 								"<td>".$row["tanggal"]."</td>".
@@ -210,7 +171,7 @@ color: rgb(129, 126, 126);">
 	<div id="bottom_left" class="left">
 		<h3>Pengeluaran</h3>
 		<form method="post">
-		<input type="hidden" name="func_d" value="input_pengeluaran"></input>
+		<!--<input type="hidden" name="func_d" value="input_pengeluaran"></input>-->
 			<div class="left_form">
 				<table>
 					<tr>
@@ -274,33 +235,6 @@ color: rgb(129, 126, 126);">
 				<input class="button" type="reset" name="batal" value="Batal"></input>
 			</div>
 		</form>
-		<?php
-			/*if(isset($_POST['simpan3'])){
-				$all_data=array(
-					$_POST['jenis'],
-					$_POST['merk'],
-					$_POST['warna'],
-					$_POST['ukuran'],
-					$_POST['jumlah'],
-					$_POST['tanggal']
-				);
-				if(!in_array("",$all_data,TRUE)){
-					$produk=array(
-						'jenis'			=> $_POST['jenis'],
-						'merk'			=> $_POST['merk'],
-						'warna'			=> $_POST['warna'],
-						'ukuran'		=> $_POST['ukuran'],
-						'jumlah'		=> $_POST['jumlah'],
-						'tanggal'		=> $_POST['tanggal'],
-						'keterangan'	=> $_POST['keterangan']
-					);
-					$keuangan=new C_data_pengeluaran();
-					$result=$keuangan->input_pengeluaran($produk);
-				}else{
-					echo "data yang anda masukkan tidak lengkap";
-				}
-			}*/
-		?>
 	</div>
 
 	<div id="bottom_right" class="right">
@@ -342,11 +276,7 @@ color: rgb(129, 126, 126);">
 					<input class="button tambah_filter" type="button" name="tambah" value="Tambah Filter"></input>
 				</div>
 			</form>
-			<?php
-				/*if(isset($_POST['simpan2'])){
-					foreach
-				}*/
-			?>
+			
 		</div>
 		<h3>Data Pengeluaran</h3>
 		<div id="thead">
@@ -365,8 +295,8 @@ color: rgb(129, 126, 126);">
 			<table>
 			<tbody>
 				<?php
-				$data_pengeluaran	= new c_data_pengeluaran();
-				$data				= $data_pengeluaran->get_all_data();
+				$pengeluaran	= new C_pengeluaran();
+				$data				= $pengeluaran->get_all_data();
 					foreach ($data as $row){
 						echo "<tr>".
 								"<td>".$row["tanggal"]."</td>".
@@ -384,15 +314,4 @@ color: rgb(129, 126, 126);">
 	</div>
 	
 </div>
-
- <a href="app/model/logout.php">
- <div id="logout" style="clear: both;
-height: 30px;
-background-color: rgb(8, 163, 52);
-width: 100%;
-text-align: center;
-color: white;">
-	Logout
- </div>
- </a>
 

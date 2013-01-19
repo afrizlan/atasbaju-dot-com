@@ -7,13 +7,7 @@
 	<div id="form">
 	<form method="post">
 	  <div class="t_form" id="t_form_p">
-			<table>
-				<tr>
-					<td>Nomor ID</td>
-					<td>:</td>
-					<td colspan="3"><input type="text" name="n_id" placeholder="Contoh: 0123456789" /></td>
-				</tr>
-                
+			<table>                
 				<tr>
 					<td>Jenis Produk</td>
 					<td>:</td>
@@ -79,11 +73,9 @@
 			  </table>
 
 <?php  
-include ("connect.php");   
-  
+
 if(isset($_POST["simpan"]))
 {  
-	$idnum = $_POST["n_id"];
 	$jenis_produk = $_POST["j_produk"];
     $merk = $_POST["merk"];
     $jenis_ukuran = $_POST["j_ukuran"];
@@ -91,21 +83,20 @@ if(isset($_POST["simpan"]))
 	$warna = $_POST["warna"];	
 	$harga = $_POST["harga"];
 	$keterangan = $_POST["keterangan"];
-	//$datetime=date("d-m-y h:i:s");
       
-    $query="INSERT INTO produk( idnum, jenis_produk, merk, jenis_ukuran, jumlah, warna, harga, keterangan,  tanggal_masuk ) 
-		VALUES( '$idnum', '$jenis_produk', '$merk', '$jenis_ukuran', '$jumlah', '$warna', '$harga', '$keterangan', now() )";
+    $query="INSERT INTO produk( jenis_produk, merk, jenis_ukuran, jumlah, warna, harga, keterangan,  tanggal_masuk ) 
+		VALUES('$jenis_produk', '$merk', '$jenis_ukuran', '$jumlah', '$warna', '$harga', '$keterangan', now() )";
 		   
-		if(strlen($idnum&&$jenis_produk&&$jenis_ukuran&&$merk&&$jumlah&&$warna&&$harga)<1){
+		if(strlen($jenis_produk&&$jenis_ukuran&&$merk&&$jumlah&&$warna&&$harga)<1){
 			echo "Semua data harus terisi!";
 	}else{
 		   
     	$result=mysql_query($query);            
     
 		if($result){  
-       		echo "Produk telah tersimpan!";
+       		echo "<script>alert(Produk telah tersimpan!)</script>";
     	}else{  
-       	 	echo "Data produk tidak berhasil disimpan!";  
+       	 	echo "<script>alert(Data produk tidak berhasil disimpan!)</script>";  
     	}  
 	}  
 }

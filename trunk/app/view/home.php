@@ -73,7 +73,7 @@
 						echo "<script>window.location='?content=admin'</script>";
 					}
 					else{
-						echo "<script>window.location='?content=keuangan'</script>";
+						echo "<script>window.location='?content=s_produk'</script>";
 					}
 					
 				}else echo "<script>window.location='?content=gagal&title=gagal+login'</script>";
